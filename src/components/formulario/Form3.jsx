@@ -188,13 +188,13 @@ const Form3 = () => {
     axios
       .post(url, data)
       .then((res) => {
-        alert('O produto foi Criado com sucesso');
+        alert('O usuário foi Criado com sucesso');
 
         history.push('/users');
       })
       .catch((erro) => {
         alert(
-          'Houve um erro ao tenta criar esse usuario, erro relacionado a ' +
+          'Houve um erro ao tenta criar esse usuário, erro relacionado a ' +
             erro
         );
         console.log(data);

@@ -2,3 +2,13 @@
   text-shadow: 0 0 0 black;
   font-weight: bold;
 }
+
+.marg {
+  display: inline-block;
+}
+
+@media screen and (max-width: 780px) {
+  .text-dark {
+    font-size: 15px;
+  }
+}

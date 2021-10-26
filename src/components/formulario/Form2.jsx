@@ -91,7 +91,7 @@ const Form2 = () => {
           <input
             type="text"
             className="form-control"
-            placeholder="Casa"
+            placeholder="Lougradouro"
             name="casa"
             onChange={onChange}
           />
@@ -138,7 +138,10 @@ const Form2 = () => {
             onChange={onChange}
           />
         </div>
-        <span className="titolo text-dark">Endereco 2</span>
+        <span className="titolo text-dark">
+          Endereco 2 como, Bairro, Rua, Casa, Nº, sim não Deixa em branco ou
+          escre Não
+        </span>
         <div className="form-group input-group">
           <div className="input-grou-prepend align-self-center">
             <div className="input-group-text">

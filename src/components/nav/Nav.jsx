@@ -4,8 +4,8 @@ import './nav.css';
 const Nav = () => {
   return (
     <>
-      <nav class="navbar navbar-light bg-info">
-        <div class="container-fluid">
+      <nav className="navbar navbar-light bg-info">
+        <div className="container-fluid">
           <button
             class="navbar-toggler"
             type="button"
@@ -17,17 +17,21 @@ const Nav = () => {
           >
             <span class="navbar-toggler-icon"></span>
           </button>
+          <h2 className="titolo2 mx-auto text-dark">
+            Sistema de Cadastro de Usuários
+          </h2>
         </div>
       </nav>
-      <div class="collapse" id="navbarToggleExternalContent">
-        <div class="bg-light p-4">
-          <a className="nav-link text-dark ef" href="/">
-            Cadastro
-          </a>
-          <a className="nav-link text-dark ef" href="/users">
-            Clientes
-          </a>
-        </div>
+      <div className="collapse" id="navbarToggleExternalContent">
+        <div className="bg-light p-4 col-md-1"></div>
+        <a className="nav-link text-dark ef" href="/users">
+          <i className="fas fa-list-ol text-info h1"></i>
+          <p className="ml-2 marg">Clientes</p>
+        </a>
+        <a className="nav-link text-dark ef" href="/">
+          <i className="fas fa-id-badge text-info marg h1" />
+          <p className="ml-2 marg">Cadastra</p>
+        </a>
       </div>
     </>
   );
