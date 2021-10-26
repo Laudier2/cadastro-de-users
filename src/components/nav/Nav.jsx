@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './nav.css';
 
 const Nav = () => {
@@ -17,9 +18,9 @@ const Nav = () => {
           >
             <span class="navbar-toggler-icon"></span>
           </button>
-          <h2 className="titolo2 mx-auto text-dark">
-            Sistema de Cadastro de Usuários
-          </h2>
+          <Link to="/" className="titolo2 mx-auto link text-dark">
+            <h2>Sistema de Cadastro de Usuários</h2>
+          </Link>
         </div>
       </nav>
       <div className="collapse" id="navbarToggleExternalContent">

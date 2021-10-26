@@ -7,6 +7,10 @@
   display: inline-block;
 }
 
+.link {
+  text-decoration: none;
+}
+
 @media screen and (max-width: 780px) {
   .text-dark {
     font-size: 15px;
