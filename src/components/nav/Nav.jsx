@@ -8,7 +8,7 @@ const Nav = () => {
       <nav className="navbar navbar-light bg-info">
         <div className="container-fluid">
           <button
-            class="navbar-toggler"
+            className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarToggleExternalContent"
@@ -16,7 +16,7 @@ const Nav = () => {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon"></span>
           </button>
           <Link to="/" className="titolo2 mx-auto link text-dark">
             <h2>Sistema de Cadastro de Usuários</h2>

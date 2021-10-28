@@ -75,7 +75,7 @@ const Modal2 = (props) => {
         <div className="form-group input-group">
           <div className="input-grou-prepend align-self-center">
             <div className="input-group-text">
-              <i className="fas fa-id-badge p-1 mt-2 text-info" />
+              <i className="p-1 text-info">Nome</i>
             </div>
           </div>
           <input
@@ -90,7 +90,7 @@ const Modal2 = (props) => {
         <div className="form-group input-group">
           <div className="input-grou-prepend align-self-center">
             <div className="input-group-text">
-              <i className="fas fa-id-badge p-1 mt-2 text-info" />
+              <i className="p-1 text-info">SobreNome</i>
             </div>
           </div>
           <input
@@ -105,7 +105,7 @@ const Modal2 = (props) => {
         <div className="form-group input-group">
           <div className="input-grou-prepend align-self-center">
             <div className="input-group-text">
-              <i className="fas fa-envelope  p-1 mt-2 text-info" />
+              <i className="p-1 text-info">E-mail</i>
             </div>
           </div>
           <input
@@ -120,7 +120,7 @@ const Modal2 = (props) => {
         <div className="form-group input-group">
           <div className="input-grou-prepend align-self-center">
             <div className="input-group-text">
-              <i className="fas fa-id-badge p-1 mt-2 text-info" />
+              <i className="p-1 text-info">Cidade</i>
             </div>
           </div>
           <input
@@ -135,7 +135,7 @@ const Modal2 = (props) => {
         <div className="form-group input-group">
           <div className="input-grou-prepend align-self-center">
             <div className="input-group-text">
-              <i className="fas fa-id-badge p-1 mt-2 text-info" />
+              <i className="p-1 text-info">UF</i>
             </div>
           </div>
           <input
@@ -150,13 +150,13 @@ const Modal2 = (props) => {
         <div className="form-group input-group">
           <div className="input-grou-prepend align-self-center">
             <div className="input-group-text">
-              <i className="fas fa-envelope  p-1 mt-2 text-info" />
+              <i className=" p-1 text-info">Bairro</i>
             </div>
           </div>
           <input
             type="bairro"
             className="form-control"
-            placeholder="Senha"
+            placeholder="Bairro"
             name="bairro"
             value={values.bairro}
             onChange={onChange}
@@ -165,7 +165,7 @@ const Modal2 = (props) => {
         <div className="form-group input-group">
           <div className="input-grou-prepend align-self-center">
             <div className="input-group-text">
-              <i className="fas fa-id-badge p-1 mt-2 text-info" />
+              <i className="p-1 text-info">Rua</i>
             </div>
           </div>
           <input
@@ -180,7 +180,7 @@ const Modal2 = (props) => {
         <div className="form-group input-group">
           <div className="input-grou-prepend align-self-center">
             <div className="input-group-text">
-              <i className="fas fa-id-badge p-1 mt-2 text-info" />
+              <i className="p-1 text-info">Logradouro</i>
             </div>
           </div>
           <input
@@ -195,7 +195,7 @@ const Modal2 = (props) => {
         <div className="form-group input-group">
           <div className="input-grou-prepend align-self-center">
             <div className="input-group-text">
-              <i className="fas fa-phone-alt  p-1 mt-2 text-info" />
+              <i className="fp-1 text-info">Telefone</i>
             </div>
           </div>
           <input
@@ -211,7 +211,7 @@ const Modal2 = (props) => {
         <div className="form-group input-group">
           <div className="input-grou-prepend align-self-center">
             <div className="input-group-text">
-              <i className="fas fa-shipping-fast p-1 mt-2 text-info" />
+              <i className="p-1 text-info">CEP</i>
             </div>
           </div>
           <input
@@ -226,7 +226,7 @@ const Modal2 = (props) => {
         <div className="form-group input-group">
           <div className="input-grou-prepend align-self-center">
             <div className="input-group-text">
-              <i className="fas fa-shipping-fast p-1 mt-2 text-info" />
+              <i className="p-1 text-info">Nº</i>
             </div>
           </div>
           <input
@@ -241,7 +241,7 @@ const Modal2 = (props) => {
         <div className="form-group input-group">
           <div className="input-grou-prepend align-self-center">
             <div className="input-group-text">
-              <i className="fas fa-shipping-fast p-1 mt-2 text-info" />
+              <i className="p-1 text-info">Endereco 2 opcional</i>
             </div>
           </div>
           <input
@@ -256,7 +256,7 @@ const Modal2 = (props) => {
         <div className="form-group input-group">
           <div className="input-grou-prepend align-self-center">
             <div className="input-group-text">
-              <i className="fas fa-calendar p-2 text-info" />
+              <i className="p-2 text-info">Data de Nacimento</i>
             </div>
           </div>
           <input
@@ -271,7 +271,7 @@ const Modal2 = (props) => {
         <div className="form-group input-group">
           <div className="input-grou-prepend align-self-center">
             <div className="input-group-text">
-              <i className="fas fa-file-signature  p-1 mt-2 text-info" />
+              <i className="p-1 text-info">CPF</i>
             </div>
           </div>
           <input
@@ -286,7 +286,7 @@ const Modal2 = (props) => {
         <div className="form-group input-group">
           <div className="input-grou-prepend align-self-center">
             <div className="input-group-text">
-              <i className="fas fas fa-wallet p-2 text-info" />
+              <i className="p-2 text-info">Renda Mensal</i>
             </div>
           </div>
           <input

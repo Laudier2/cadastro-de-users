@@ -4,6 +4,7 @@ import Modal from '../modal/Modal';
 import Modal2 from '../modal/Modal2';
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
+import Skeleton from 'react-loading-skeleton';
 
 export default function Cadastro({ users }) {
   const [pega, setPega] = useState('');
@@ -41,8 +42,15 @@ export default function Cadastro({ users }) {
       });
   };
 
+  const Update = () => {
+    window.location.reload();
+  };
+
   return (
     <div>
+      <div className="">
+        <Skeleton height={28} width={300} />
+      </div>
       <div className="jumbotron jumbotron-fuid bg-img mt-2"></div>
 
       <div className="row">
@@ -59,6 +67,11 @@ export default function Cadastro({ users }) {
                 </th>
                 <th scope="col">Usuario</th>
                 <th scope="col">E-mail</th>
+                <th scope="col">
+                  <button className="btn titolo2" onClick={Update}>
+                    UP Page
+                  </button>
+                </th>
               </tr>
             </thead>
 

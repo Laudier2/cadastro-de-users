@@ -1,16 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
-const dados = {
-  cep: '',
-  city: '',
-  bairro: '',
-  casa: '',
-  endereco2: '',
-};
+import { mask, unMask } from 'remask';
 
 const Form2 = () => {
-  const [data, setData] = useState(dados);
+  const [data, setData] = useState('');
+  const [data2, setData2] = useState('');
 
   const onChange = (ev) => {
     const { name, value } = ev.target;
@@ -19,7 +13,6 @@ const Form2 = () => {
   };
 
   const localCreate = (e) => {
-    localStorage.setItem('cep', JSON.stringify(e.cep));
     localStorage.setItem('city', JSON.stringify(e.city));
     localStorage.setItem('casa', JSON.stringify(e.casa));
     localStorage.setItem('bairro', JSON.stringify(e.bairro));
@@ -29,6 +22,15 @@ const Form2 = () => {
     localStorage.setItem('endereco2', JSON.stringify(e.endereco2));
   };
 
+  const onChange1 = (ev) => {
+    const Mascara1 = unMask(ev.target.value);
+    const Mascara2 = mask(Mascara1, ['99999-999']);
+
+    setData2(Mascara2);
+    console.log(Mascara2);
+    localStorage.setItem('cep', JSON.stringify(data2));
+  };
+
   return (
     <div>
       <div className="container col-md-8 text-white">
@@ -36,7 +38,10 @@ const Form2 = () => {
           className="mx-auto text-white mb-3 titolo text-dark"
           style={{ width: 330, marginTop: 50 }}
         >
-          Preecha os enderecos 1 e 2
+          Preecha os enderecos 1 e 2{' '}
+          <Link to="/form3" className="btn btn-info">
+            Form3
+          </Link>
         </h4>
 
         <span className="titolo text-dark">Endereco 1</span>
@@ -50,8 +55,9 @@ const Form2 = () => {
             type="text"
             className="form-control"
             placeholder="CEP"
+            value={data2}
             name="cep"
-            onChange={onChange}
+            onChange={onChange1}
           />
         </div>
         <div className="form-group input-group">

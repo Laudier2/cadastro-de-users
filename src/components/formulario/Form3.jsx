@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
+import { mask, unMask } from 'remask';
 
 const Form3 = () => {
   const [name, setLocal1] = useState('');
@@ -18,7 +19,10 @@ const Form3 = () => {
   const [uf, setLocal13] = useState('');
   const [numero, setLocal14] = useState('');
   const [rua, setLocal15] = useState('');
-  const [data, setData] = useState([]);
+  const [data, setData] = useState('');
+  const [data1, setData1] = useState('');
+  const [data2, setData2] = useState('');
+  const [data3, setData3] = useState('');
 
   console.clear();
 
@@ -128,12 +132,6 @@ const Form3 = () => {
     LocalRua();
   }, []);
 
-  const localCreate = (e) => {
-    localStorage.setItem('cpf', JSON.stringify(e.cpf));
-    localStorage.setItem('nacimento', JSON.stringify(e.nacimento));
-    localStorage.setItem('rendaMes', JSON.stringify(e.rendaMes));
-  };
-
   useEffect(() => {
     const result = {
       name,
@@ -172,11 +170,35 @@ const Form3 = () => {
     rendaMes,
   ]);
 
-  const onChange = (ev) => {
+  const onChange1 = (ev) => {
+    const Mascara1 = unMask(ev.target.value);
+    const Mascara2 = mask(Mascara1, ['99/99/9999']);
+
+    setData1(Mascara2);
+    localStorage.setItem('nacimento', JSON.stringify(data1));
+  };
+
+  const onChange2 = (ev) => {
+    const Mascara1 = unMask(ev.target.value);
+    const Mascara2 = mask(Mascara1, ['999.999.999-99', '99.999.999/999-99']);
+
+    setData2(Mascara2);
+    localStorage.setItem('cpf', JSON.stringify(data2));
+  };
+
+  const onChange3 = (ev) => {
+    const Mascara1 = unMask(ev.target.value);
+    const Mascara2 = mask(Mascara1, ['9.999,99', '99.999,99', '999.999,00']);
+
+    setData3(Mascara2);
+    localStorage.setItem('rendaMes', JSON.stringify(data3));
+  };
+
+  /*const onChange = (ev) => {
     const { name, value } = ev.target;
 
     setData({ ...data, [name]: value });
-  };
+  };*/
 
   const history = useHistory();
 
@@ -194,13 +216,11 @@ const Form3 = () => {
       })
       .catch((erro) => {
         alert(
-          'Houve um erro ao tenta criar esse usuário, erro relacionado a ' +
-            erro
+          'Houve um erro ao tenta criar esse usuário, erro relacionado ao E-mail, tente novamente'
         );
-        console.log(data);
 
-        localStorage.clear();
-        history.push('/form3');
+        //localStorage.clear();
+        history.push('/');
         //window.location.reload();
       });
   }
@@ -227,7 +247,8 @@ const Form3 = () => {
               className="form-control"
               placeholder="Data de Nacimento"
               name="nacimento"
-              onChange={onChange}
+              value={data1}
+              onChange={onChange1}
             />
           </div>
           <div className="form-group input-group">
@@ -240,8 +261,9 @@ const Form3 = () => {
               type="text"
               className="form-control"
               placeholder="CPF"
+              value={data2}
               name="cpf"
-              onChange={onChange}
+              onChange={onChange2}
             />
           </div>
           <div className="form-group input-group">
@@ -254,15 +276,12 @@ const Form3 = () => {
               type="text"
               className="form-control"
               placeholder="Reanda Mensal"
+              value={data3}
               name="rendaMes"
-              onChange={onChange}
+              onChange={onChange3}
             />
           </div>
-          <button
-            type="submit"
-            className="btn btn-success btn-block"
-            onClick={() => localCreate(data)}
-          >
+          <button type="submit" className="btn btn-success btn-block">
             Salva
           </button>
         </form>

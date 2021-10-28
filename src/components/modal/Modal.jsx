@@ -21,7 +21,7 @@ const Modal = ({ dados }) => {
           </li>
           <li>
             {' '}
-            <strong className="text-primary">CPF:</strong> {dados.cpf}
+            <strong className="text-primary">CPF ou CNPJ:</strong> {dados.cpf}
           </li>
           <li>
             {' '}
@@ -68,7 +68,7 @@ const Modal = ({ dados }) => {
           </li>
           <li>
             {' '}
-            <strong className="text-primary">Renda Mensal:</strong> R$
+            <strong className="text-primary">Renda Mensal:</strong> R${' '}
             {dados.rendaMes}
           </li>
         </ul>

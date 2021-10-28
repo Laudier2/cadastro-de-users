@@ -1,15 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
-const dados = {
-  name: '',
-  sobrenome: '',
-  email: '',
-  telefone: '',
-};
+import { mask, unMask } from 'remask';
 
 const Form1 = () => {
-  const [data, setData] = useState(dados);
+  const [data, setData] = useState('');
+  const [data2, setData2] = useState('');
   //const [local, setLocal] = useState('');
 
   const onChange = (ev) => {
@@ -18,11 +13,19 @@ const Form1 = () => {
     setData({ ...data, [name]: value });
   };
 
+  const onChange1 = (ev) => {
+    const Mascara1 = unMask(ev.target.value);
+    const Mascara2 = mask(Mascara1, ['(99) 999999999']);
+
+    setData2(Mascara2);
+    console.log(Mascara2);
+    localStorage.setItem('telefone', JSON.stringify(data2));
+  };
+
   const localCreate = (e) => {
     localStorage.setItem('name', JSON.stringify(e.name));
     localStorage.setItem('sobrenome', JSON.stringify(e.sobrenome));
     localStorage.setItem('email', JSON.stringify(e.email));
-    localStorage.setItem('telefone', JSON.stringify(e.telefone));
   };
 
   return (
@@ -33,7 +36,10 @@ const Form1 = () => {
             className="mx-auto text-white mb-3 titolo text-dark"
             style={{ width: 330, marginTop: 50 }}
           >
-            Preecha os campos abaixo
+            Preecha os campos abaixo{' '}
+            <Link to="/form2" className="btn btn-info">
+              Form2
+            </Link>
           </h4>
 
           <div className="form-group input-group">
@@ -89,7 +95,8 @@ const Form1 = () => {
               className="form-control"
               placeholder="Telefone"
               name="telefone"
-              onChange={onChange}
+              value={data2}
+              onChange={onChange1}
             />
           </div>
           <Link

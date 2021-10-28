@@ -19,14 +19,14 @@ function App() {
       const req = await Axios.get(process.env.REACT_APP_API_URL)
       const res = await req.data;
 
-      console.clear()
+      //console.clear()
     
       setUsers(res)
     }
 
     GetReq()
   }, [])
-
+  
   return (
     <>
       <Nav />
