@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Cadastro from './components/Cadastro/Cadastro'
+import ListaDeClientes from './components/ListaClientes/ListaDeClientes'
 import Axios from 'axios'
 import { Route } from "react-router-dom";
 import './style.css'
@@ -32,7 +32,7 @@ function App() {
       <Nav />
       <div className="container">
         <div className="col-md-8 offset-md-2">
-          <Route exact path="/users" component={() => <Cadastro users={users}/>} />
+          <Route exact path="/users" component={() => <ListaDeClientes users={users}/>} />
           <Route exact path="/" component={Form1} />
           <Route exact path="/form2" component={Form2} />
           <Route exact path="/form3" component={Form3} />
