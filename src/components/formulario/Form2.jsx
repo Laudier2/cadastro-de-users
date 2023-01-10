@@ -10,16 +10,29 @@ const Form2 = () => {
     const { name, value } = ev.target;
 
     setData({ ...data, [name]: value });
+
+    /*
+    password",
+    "email",
+    "phone",
+    "cep",
+    "city",
+    "district",
+    "endereco2",
+    "apartment_or_house",
+    "state",
+    "street",
+    */
   };
 
   const localCreate = (e) => {
     localStorage.setItem('city', JSON.stringify(e.city));
-    localStorage.setItem('casa', JSON.stringify(e.casa));
-    localStorage.setItem('bairro', JSON.stringify(e.bairro));
-    localStorage.setItem('uf', JSON.stringify(e.uf));
-    localStorage.setItem('numero', JSON.stringify(e.numero));
-    localStorage.setItem('rua', JSON.stringify(e.rua));
-    localStorage.setItem('endereco2', JSON.stringify(e.endereco2));
+    localStorage.setItem('apartment_or_house', JSON.stringify(e.apartment_or_house));
+    localStorage.setItem('district', JSON.stringify(e.district));
+    localStorage.setItem('state', JSON.stringify(e.state));
+    localStorage.setItem('number', JSON.stringify(e.number));
+    localStorage.setItem('apartment_or_house', JSON.stringify(e.apartment_or_house));
+    localStorage.setItem('street', JSON.stringify(e.street));
   };
 
   const onChange1 = (ev) => {
@@ -83,8 +96,22 @@ const Form2 = () => {
           <input
             type="text"
             className="form-control"
-            placeholder="Bairro e Rua"
-            name="bairro"
+            placeholder="Rua"
+            name="street"
+            onChange={onChange}
+          />
+        </div>
+        <div className="form-group input-group">
+          <div className="input-grou-prepend align-self-center">
+            <div className="input-group-text">
+              <i className="fas fa-envelope  p-1 mt-2 text-info" />
+            </div>
+          </div>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Bairro"
+            name="district"
             onChange={onChange}
           />
         </div>
@@ -98,7 +125,7 @@ const Form2 = () => {
             type="text"
             className="form-control"
             placeholder="Lougradouro"
-            name="casa"
+            name="apartment_or_house"
             onChange={onChange}
           />
         </div>
@@ -112,7 +139,7 @@ const Form2 = () => {
             type="text"
             className="form-control"
             placeholder="UF"
-            name="uf"
+            name="state"
             onChange={onChange}
           />
         </div>
@@ -126,45 +153,13 @@ const Form2 = () => {
             type="text"
             className="form-control"
             placeholder="Número"
-            name="numero"
-            onChange={onChange}
-          />
-        </div>
-        <div className="form-group input-group">
-          <div className="input-grou-prepend align-self-center">
-            <div className="input-group-text">
-              <i className="fas fa-envelope  p-1 mt-2 text-info" />
-            </div>
-          </div>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Rua"
-            name="rua"
-            onChange={onChange}
-          />
-        </div>
-        <span className="titolo text-dark">
-          Endereco 2 como, Bairro, Rua, Casa, Nº, sim não Deixa em branco ou
-          escre Não
-        </span>
-        <div className="form-group input-group">
-          <div className="input-grou-prepend align-self-center">
-            <div className="input-group-text">
-              <i className="fas fa-envelope  p-1 mt-2 text-info" />
-            </div>
-          </div>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Endereco 2"
-            name="endereco2"
+            name="number"
             onChange={onChange}
           />
         </div>
         <Link
           to="/form3"
-          className="btn btn-secondary btn-block"
+          className="btn btn-outline-info btn-block"
           onClick={() => localCreate(data)}
         >
           Proximo

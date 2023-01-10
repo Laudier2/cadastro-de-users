@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { mask, unMask } from 'remask';
+import "./form.css"
 
 const Form1 = () => {
   const [data, setData] = useState('');
@@ -19,12 +20,12 @@ const Form1 = () => {
 
     setData2(Mascara2);
     console.log(Mascara2);
-    localStorage.setItem('telefone', JSON.stringify(data2));
+    localStorage.setItem('phone', JSON.stringify(data2));
   };
 
   const localCreate = (e) => {
     localStorage.setItem('name', JSON.stringify(e.name));
-    localStorage.setItem('sobrenome', JSON.stringify(e.sobrenome));
+    localStorage.setItem('password', JSON.stringify(e.password));
     localStorage.setItem('email', JSON.stringify(e.email));
   };
 
@@ -51,7 +52,7 @@ const Form1 = () => {
             <input
               type="text"
               className="form-control"
-              placeholder="Seu Nome"
+              placeholder="Nome Completo"
               name="name"
               onChange={onChange}
             />
@@ -65,8 +66,8 @@ const Form1 = () => {
             <input
               type="text"
               className="form-control"
-              placeholder="Sobrenome"
-              name="sobrenome"
+              placeholder="Password"
+              name="password"
               onChange={onChange}
             />
           </div>
@@ -94,14 +95,14 @@ const Form1 = () => {
               type="text"
               className="form-control"
               placeholder="Telefone"
-              name="telefone"
+              name="phone"
               value={data2}
               onChange={onChange1}
             />
           </div>
           <Link
             to="/form2"
-            className="btn btn-secondary btn-block"
+            className="btn btn-outline-info btn-block"
             onClick={() => localCreate(data)}
           >
             Proximo

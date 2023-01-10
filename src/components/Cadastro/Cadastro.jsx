@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './cadastro.css';
-import Modal from '../modal/Modal';
+import Modal from '../modal/Modal-update';
 import Modal2 from '../modal/Modal2';
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
@@ -17,7 +17,7 @@ export default function Cadastro({ users }) {
   useEffect(() => {
     if (idAtual) {
       axios
-        .get(`${process.env.REACT_APP_API_URL}admin/${idAtual}`)
+        .get(`${process.env.REACT_APP_API_URL}${idAtual}`)
         .then((res) => {
           setValues(res.data);
         });

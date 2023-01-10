@@ -10,15 +10,11 @@ const camposIniciasDeValores = {
   phone: '',
   cep: '',
   city: '',
-  bairro: '',
-  endereco2: '',
-  casa: '',
-  cpf: '',
-  nacimento: '',
-  rendaMes: '',
-  uf: '',
-  numero: '',
-  rua: '',
+  district: '',
+  apartment_or_house: '',
+  state: '',
+  street: '',
+  number: '',
 };
 
 const ModalAdd = () => {
@@ -39,18 +35,18 @@ const ModalAdd = () => {
     ev.preventDefault();
 
     
-    const url = `${process.env.REACT_APP_API_URL}`;
+    const url = `${process.env.REACT_APP_API_URL}/`;
 
     axios.post(url, values)
     .then((res) => {
-        alert('O usuário foi Criado com sucesso');
+        alert('O usuário foi Criado com sucesso', res);
 
         history.push('/users');
         window.location.reload()
       })
       .catch((erro) => {
         alert(
-          'Houve um erro ao tenta criar esse usuário, erro relacionado ao E-mail, tente novamente'
+          `Houve um erro ao tenta criar esse usuário, erro relacionado a ${erro}`
         );
 
         //localStorage.clear();
@@ -62,7 +58,7 @@ const ModalAdd = () => {
   return (
     <>
       <form onSubmit={onSubmit}>
-        <div className="form-group input-group">
+      <div className="form-group input-group">
           <div className="input-grou-prepend align-self-center">
             <div className="input-group-text">
               <i className="p-1 text-info">Nome</i>
@@ -71,24 +67,9 @@ const ModalAdd = () => {
           <input
             type="text"
             className="form-control"
-            placeholder="Seu Nome"
+            placeholder="Nome"
             name="name"
             value={values.name}
-            onChange={onChange}
-          />
-        </div>
-        <div className="form-group input-group">
-          <div className="input-grou-prepend align-self-center">
-            <div className="input-group-text">
-              <i className="p-1 text-info">SobreNome</i>
-            </div>
-          </div>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Sobrenome"
-            name="sobrenome"
-            value={values.sobrenome}
             onChange={onChange}
           />
         </div>
@@ -101,7 +82,7 @@ const ModalAdd = () => {
           <input
             type="email"
             className="form-control"
-            placeholder="E-mail"
+            placeholder="email"
             name="email"
             value={values.email}
             onChange={onChange}
@@ -110,13 +91,73 @@ const ModalAdd = () => {
         <div className="form-group input-group">
           <div className="input-grou-prepend align-self-center">
             <div className="input-group-text">
-              <i className="p-1 text-info">Cidade</i>
+              <i className="p-1 text-info">Password</i>
+            </div>
+          </div>
+          <input
+            type="password"
+            className="form-control"
+            placeholder="password"
+            name="password"
+            value={values.password}
+            onChange={onChange}
+          />
+        </div>
+        <div className="form-group input-group">
+          <div className="input-grou-prepend align-self-center">
+            <div className="input-group-text">
+              <i className="p-1 text-info">Phone</i>
             </div>
           </div>
           <input
             type="text"
             className="form-control"
-            placeholder="Cidade"
+            placeholder="phone"
+            name="phone"
+            value={values.phone}
+            onChange={onChange}
+          />
+        </div>
+        <div className="form-group input-group">
+          <div className="input-grou-prepend align-self-center">
+            <div className="input-group-text">
+              <i className="p-1 text-info">Estado</i>
+            </div>
+          </div>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="state"
+            name="state"
+            value={values.state}
+            onChange={onChange}
+          />
+        </div>
+        <div className="form-group input-group">
+          <div className="input-grou-prepend align-self-center">
+            <div className="input-group-text">
+              <i className=" p-1 text-info">Cep</i>
+            </div>
+          </div>
+          <input
+            type="bairro"
+            className="form-control"
+            placeholder="cep"
+            name="cep"
+            value={values.cep}
+            onChange={onChange}
+          />
+        </div>
+        <div className="form-group input-group">
+          <div className="input-grou-prepend align-self-center">
+            <div className="input-group-text">
+              <i className=" p-1 text-info">Cidade</i>
+            </div>
+          </div>
+          <input
+            type="bairro"
+            className="form-control"
+            placeholder="city"
             name="city"
             value={values.city}
             onChange={onChange}
@@ -125,30 +166,15 @@ const ModalAdd = () => {
         <div className="form-group input-group">
           <div className="input-grou-prepend align-self-center">
             <div className="input-group-text">
-              <i className="p-1 text-info">UF</i>
+              <i className="p-1 text-info">Bairro</i>
             </div>
           </div>
           <input
             type="text"
             className="form-control"
-            placeholder="UF"
-            name="uf"
-            value={values.uf}
-            onChange={onChange}
-          />
-        </div>
-        <div className="form-group input-group">
-          <div className="input-grou-prepend align-self-center">
-            <div className="input-group-text">
-              <i className=" p-1 text-info">Bairro</i>
-            </div>
-          </div>
-          <input
-            type="bairro"
-            className="form-control"
-            placeholder="Bairro"
-            name="bairro"
-            value={values.bairro}
+            placeholder="district"
+            name="district"
+            value={values.district}
             onChange={onChange}
           />
         </div>
@@ -160,10 +186,10 @@ const ModalAdd = () => {
           </div>
           <input
             type="text"
-            className="form-control"
-            placeholder="Rua"
-            name="rua"
-            value={values.rua}
+            className="form-coentrol"
+            placeholder="street"
+            name="street"
+            value={values.street}
             onChange={onChange}
           />
         </div>
@@ -176,115 +202,25 @@ const ModalAdd = () => {
           <input
             type="text"
             className="form-control"
-            placeholder="Complemento"
-            name="casa"
-            value={values.casa}
+            placeholder="apartment_or_house"
+            name="apartment_or_house"
+            value={values.apartment_or_house}
             onChange={onChange}
           />
         </div>
         <div className="form-group input-group">
           <div className="input-grou-prepend align-self-center">
             <div className="input-group-text">
-              <i className="fp-1 text-info">Telefone</i>
+              <i className="fp-1 text-info">Número</i>
             </div>
           </div>
           <input
             type="text"
             className="form-control"
-            placeholder="Telefone"
+            placeholder="number"
             min="0"
-            name="phone"
-            value={values.phone}
-            onChange={onChange}
-          />
-        </div>
-        <div className="form-group input-group">
-          <div className="input-grou-prepend align-self-center">
-            <div className="input-group-text">
-              <i className="p-1 text-info">CEP</i>
-            </div>
-          </div>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="CEP"
-            name="cep"
-            value={values.cep}
-            onChange={onChange}
-          />
-        </div>
-        <div className="form-group input-group">
-          <div className="input-grou-prepend align-self-center">
-            <div className="input-group-text">
-              <i className="p-1 text-info">Nº</i>
-            </div>
-          </div>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Número"
-            name="numero"
-            value={values.numero}
-            onChange={onChange}
-          />
-        </div>
-        <div className="form-group input-group">
-          <div className="input-grou-prepend align-self-center">
-            <div className="input-group-text">
-              <i className="p-1 text-info">Endereco 2 opcional</i>
-            </div>
-          </div>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Endereco2"
-            name="endereco2"
-            value={values.endereco2}
-            onChange={onChange}
-          />
-        </div>
-        <div className="form-group input-group">
-          <div className="input-grou-prepend align-self-center">
-            <div className="input-group-text">
-              <i className="p-2 text-info">Data de Nacimento</i>
-            </div>
-          </div>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Idade ex: 01/01/2000"
-            name="nacimento"
-            value={values.nacimento}
-            onChange={onChange}
-          />
-        </div>
-        <div className="form-group input-group">
-          <div className="input-grou-prepend align-self-center">
-            <div className="input-group-text">
-              <i className="p-1 text-info">CPF</i>
-            </div>
-          </div>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="CPF"
-            name="cpf"
-            value={values.cpf}
-            onChange={onChange}
-          />
-        </div>
-        <div className="form-group input-group">
-          <div className="input-grou-prepend align-self-center">
-            <div className="input-group-text">
-              <i className="p-2 text-info">Renda Mensal</i>
-            </div>
-          </div>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Renda mensal"
-            name="rendaMes"
-            value={values.rendaMes}
+            name="number"
+            value={values.number}
             onChange={onChange}
           />
         </div>

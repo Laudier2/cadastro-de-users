@@ -18,7 +18,7 @@ export default function Cadastro({ users }) {
   useEffect(() => {
     if (idAtual) {
       axios
-        .get(`${process.env.REACT_APP_API_URL}/admin/${idAtual}`)
+        .get(`${process.env.REACT_APP_API_URL}${idAtual}`)
         .then((res) => {
           setValues(res.data);
         });
@@ -27,7 +27,7 @@ export default function Cadastro({ users }) {
 
   const ApagaProduto = (id) => {
     axios //Esse process.env.REACT_APP_API_URL é uma variave de ambiente que contem a url da api
-      .delete(`${process.env.REACT_APP_API_URL}/${id}`)
+      .delete(`${process.env.REACT_APP_API_URL}${id}`)
       .then((res) => {
         alert('O Usuário foi deletado com sucesso ');
         history.push('/users');
@@ -64,7 +64,7 @@ export default function Cadastro({ users }) {
                 </th>
                 <th scope="col mrg">Usuario</th>
                 <th scope="col mrg">E-mail</th>
-                <th scope="col mrg">phone</th>
+                <th scope="col mrg">Phone</th>
                 <th scope="col mrg">
                   <Link
                       class="btn btn-outline-info"
@@ -183,16 +183,16 @@ export default function Cadastro({ users }) {
                       data-bs-toggle="modal"
                       data-bs-target="#exampleModal"
                       onClick={() => {
-                        setIdAtual(r._id);
+                        setIdAtual(r.id);
                       }}
                       className="mr-2"
                     >
-                      <i className="fas fa-edit mt-2 p-2 text-info btn btn-light card" />
+                      <i className="fa-solid fa-plus mt-2 p-2 text-info btn btn-light card" />
                     </Link>
 
                     <div
                       class="modal fade"
-                      id="exampleModal"
+                      id="exampleModal3"
                       tabindex="-1"
                       aria-labelledby="exampleModalLabel"
                       aria-hidden="true"
@@ -222,6 +222,18 @@ export default function Cadastro({ users }) {
                         </div>
                       </div>
                     </div>
+                    
+                    <Link
+                      class="btn btn-outline-info"
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal3"
+                      onClick={() => {
+                        setIdAtual(r.id);
+                      }}
+                      className="mr-2"
+                    >
+                      <i className="fas fa-edit mt-2 p-2 text-info btn btn-light card" />
+                    </Link>
 
                     <Link to="/users" onClick={() => ApagaProduto(r._id)}>
                       <i className="fas fa-trash-alt mt-2 p-2 text-danger btn btn-light card" />
