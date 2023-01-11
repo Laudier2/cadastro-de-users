@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './cadastro.css';
 import ModalView from '../modal/Modal-view';
+import ModalDel from '../modal/Modal-delete_user'
 import ModalUpdate from '../modal/Modal-update';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Skeleton from 'react-loading-skeleton';
 import ModalAdd from '../modal/Modal-add';
@@ -13,7 +14,6 @@ export default function Cadastro({ users }) {
   const [values, setValues] = useState('');
 
   localStorage.clear();
-  const history = useHistory();
 
   useEffect(() => {
     if (idAtual) {
@@ -24,24 +24,6 @@ export default function Cadastro({ users }) {
         });
     }
   }, [idAtual]);
-
-  const ApagaProduto = (id) => {
-    axios //Esse process.env.REACT_APP_API_URL é uma variave de ambiente que contem a url da api
-      .delete(`${process.env.REACT_APP_API_URL}${id}`)
-      .then((res) => {
-        alert('O Usuário foi deletado com sucesso ');
-        history.push('/users');
-        window.location.reload();
-      })
-      .catch((erro) => {
-        alert(
-          'Houve um erro ao tenta apaga esse produto, erro relacionado a ' +
-            erro
-        );
-        history.push('/users');
-        window.location.reload();
-      });
-  };
 
   return (
     <div>
@@ -235,7 +217,48 @@ export default function Cadastro({ users }) {
                       <i className="fas fa-edit mt-2 p-2 text-info btn btn-light card" />
                     </Link>
 
-                    <Link to="/users" onClick={() => ApagaProduto(r._id)}>
+                    <div
+                      class="modal fade"
+                      id="exampleModal4"
+                      tabindex="-1"
+                      aria-labelledby="exampleModalLabel"
+                      aria-hidden="true"
+                    >
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5
+                              class="modal-title titolo2"
+                              id="exampleModalLabel"
+                            >
+                              Atualize o Usuário {values.name}
+                            </h5>
+                            <button
+                              type="button"
+                              class="btn-close"
+                              data-bs-dismiss="modal"
+                              aria-label="Close"
+                              className="btn-outline-danger"
+                            >
+                              x
+                            </button>
+                          </div>
+                          <div class="modal-body text-dark">
+                            <ModalDel {...{ idAtual, users }} />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <Link
+                      class="btn btn-outline-info"
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal4"
+                      onClick={() => {
+                        setIdAtual(r.id);
+                      }}
+                      className="mr-2"
+                    >
                       <i className="fas fa-trash-alt mt-2 p-2 text-danger btn btn-light card" />
                     </Link>
                   </td>

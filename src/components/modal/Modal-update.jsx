@@ -57,7 +57,7 @@ const Modal2 = (props) => {
 
     const method = props.idAtual ? 'put' : 'post';
     const url = props.idAtual
-      ? `${process.env.REACT_APP_API_URL}${props.idAtual}`
+      ? `${process.env.REACT_APP_API_URL}` //${props.idAtual}
       : `${process.env.REACT_APP_API_URL}`;
 
     axios[method](url, values)
