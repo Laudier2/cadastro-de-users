@@ -3,37 +3,12 @@ import './modal.css';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
-const camposIniciasDeValores = {
-  name: '',
-  sobrenome: '',
-  email: '',
-  phone: '',
-  cep: '',
-  city: '',
-  district: '',
-  apartment_or_house: '',
-  state: '',
-  street: '',
-  number: '',
-};
-/*
-name,
-password,
-email,
-phone,
-cep,
-city,
-district,
-apartment_or_house,
-state,
-street,
-number*/
 
 const Modal2 = (props) => {
   const [values, setValues] = useState(props);
 
   console.clear();
-  console.log(camposIniciasDeValores);
+  console.log(values);
 
 
   useEffect(() => {
@@ -47,13 +22,16 @@ const Modal2 = (props) => {
   }, [props.idAtual]);
 
   const history = useHistory();
-  console.log(props.users)
+  console.log(props.idAtual)
 
-  const ApagaProduto = () => {
-    axios //Esse process.env.REACT_APP_API_URL é uma variave de ambiente que contem a url da api
-      .delete(`${process.env.REACT_APP_API_URL}${props.idAtual}`)
+  const result = props.idAtual
+
+  const ApagaProduto = async () => {
+    await  axios //Esse process.env.REACT_APP_API_URL é uma variave de ambiente que contem a url da api
+      .delete(`${process.env.REACT_APP_API_URL}`)
       .then((res) => {
-        alert('O Usuário foi deletado com sucesso ');
+        res.json(result)
+        alert('O Usuário foi deletado com sucesso');
         history.push('/users');
         window.location.reload();
       })
