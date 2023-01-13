@@ -5,7 +5,8 @@ import { useHistory } from 'react-router-dom';
 
 
 const Modal2 = (props) => {
-  const [values, setValues] = useState(props);
+  const [values, setValues] = useState([]);
+  const [user, setUser] = useState([]);
 
   console.clear();
   console.log(values);
@@ -16,35 +17,40 @@ const Modal2 = (props) => {
       axios
         .get(`${process.env.REACT_APP_API_URL}${props.idAtual}`)
         .then((res) => {
-          setValues(res.data);
+          setValues(res.data.id);
+        });
+    }
+  }, [props.idAtual]);
+
+  useEffect(() => {
+    if (props.idAtual) {
+      axios
+        .get(`${process.env.REACT_APP_API_URL}${props.idAtual}`)
+        .then((res) => {
+          setUser(res.data.name);
         });
     }
   }, [props.idAtual]);
 
   const history = useHistory();
-  console.log(props.idAtual)
-
-  const result = props.idAtual
 
   const ApagaProduto = async () => {
-    await  axios //Esse process.env.REACT_APP_API_URL é uma variave de ambiente que contem a url da api
-      .delete(`${process.env.REACT_APP_API_URL}`)
+    //Esse process.env.REACT_APP_API_URL é uma variave de ambiente que contem a url da api
+    await  axios.delete(process.env.REACT_APP_API_URL + values)
       .then((res) => {
-        res.json(result)
         alert('O Usuário foi deletado com sucesso');
         history.push('/users');
         window.location.reload();
       })
-      .catch((erro) => {
+      .catch((err) => {
         alert(
           'Houve um erro ao tenta apaga esse produto, erro relacionado a ' +
-            erro
+          err
         );
         history.push('/users');
         window.location.reload();
-      });
-  };
-
+      })
+    }
 
   return (
     <>
@@ -52,7 +58,7 @@ const Modal2 = (props) => {
         <div className="form-group input-group">
           <div className="input-grou-prepend align-self-center">
             <div className="input-group-text">
-              <i className="p-1 text-info">Ao clica em apaga. O usúario {values.name} sera deletado!</i>
+              <i className="p-1 text-info">Ao clica em apaga. O usúario <strong className='h4 text-danger'>'{user}'</strong> sera deletado!</i>
             </div>
           </div>
         </div>        

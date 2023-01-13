@@ -38,9 +38,9 @@ const Form1 = () => {
             style={{ width: 330, marginTop: 50 }}
           >
             Preecha os campos abaixo{' '}
-            <Link to="/form2" className="btn btn-info">
-              Form2
-            </Link>
+            <Link to="/form2" className="btn btn-info mt-2" style={{ marginLeft: 250 }}>
+          <i class="fa-solid fa-arrow-right"></i>
+          </Link>
           </h4>
 
           <div className="form-group input-group">

@@ -195,7 +195,7 @@ const Modal2 = (props) => {
           </div>
           <input
             type="text"
-            className="form-coentrol"
+            className="form-coentrol border border-0"
             placeholder="street"
             name="street"
             value={values.street}

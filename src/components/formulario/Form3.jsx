@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const Form3 = () => {
@@ -23,7 +24,7 @@ const Form3 = () => {
     const LocalName = async () => {
       const req = await localStorage.getItem('name');
       const res = await JSON.parse(req);
-      setLocal1(res);
+      setLocal1(res === undefined ? '' : res);
     };
     LocalName();
 
@@ -175,13 +176,26 @@ const Form3 = () => {
           >
             Confira os dados abaixo
           </h4>
-
+          <Link to="/form2" className="btn btn-info">
+          <i class="fa-solid fa-arrow-left"></i>
+          </Link>
+          <hr className='h1' />
           <div className="form-group input-group">       
-            
+            <p className='p-2'><strong>Nome:  </strong>{name} | </p>
+            <p className='p-2'><strong>Email:  </strong>{email} |</p>
+            <p className='p-2'><strong>Senha:  </strong>{password} |</p>
+            <p className='p-2'><strong>Telefone:  </strong>{phone} |</p>
+            <p className='p-2'><strong>Estado:  </strong>{state} |</p>
+            <p className='p-2'><strong>Cidade:  </strong>{city} |</p>
+            <p className='p-2'><strong>Bairro:  </strong>{district} |</p>
+            <p className='p-2'><strong>Rua:  </strong>{street} |</p>
+            <p className='p-2'><strong>Casa:  </strong>{apartment_or_house} |</p>
+            <p className='p-2'><strong>Numero:  </strong>{number} |</p>
           </div>
           <button type="submit" className="btn btn-success btn-block">
             Salva
           </button>
+          
         </form>
       </div>
     </>

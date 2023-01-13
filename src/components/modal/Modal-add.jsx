@@ -35,7 +35,7 @@ const ModalAdd = () => {
     ev.preventDefault();
 
     
-    const url = `${process.env.REACT_APP_API_URL}/`;
+    const url = `${process.env.REACT_APP_API_URL}`;
 
     axios.post(url, values)
     .then((res) => {
@@ -186,7 +186,7 @@ const ModalAdd = () => {
           </div>
           <input
             type="text"
-            className="form-coentrol"
+            className="form-coentrol border border-0"
             placeholder="street"
             name="street"
             value={values.street}

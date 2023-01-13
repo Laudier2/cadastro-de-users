@@ -49,11 +49,14 @@ const Form2 = () => {
       <div className="container col-md-8 text-white">
         <h4
           className="mx-auto text-white mb-3 titolo text-dark"
-          style={{ width: 330, marginTop: 50 }}
+          style={{ width: 330, marginTop: 50}}
         >
           Preecha os enderecos 1 e 2{' '}
-          <Link to="/form3" className="btn btn-info">
-            Form3
+          <Link to="/" className="btn btn-info mt-2">
+          <i class="fa-solid fa-arrow-left"></i>
+          </Link>
+          <Link to="/form3" className="btn btn-info mt-2" style={{ marginLeft: 200 }}>
+          <i class="fa-solid fa-arrow-right"></i>
           </Link>
         </h4>
 

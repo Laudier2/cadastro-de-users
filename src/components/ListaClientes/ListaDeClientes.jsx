@@ -7,11 +7,17 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Skeleton from 'react-loading-skeleton';
 import ModalAdd from '../modal/Modal-add';
+//import styled from "styled-components";
+//
+//const Bg = styled.background`
+//    background: #0099FF;
+//`;
 
 export default function Cadastro({ users }) {
   const [pega, setPega] = useState('');
   const [idAtual, setIdAtual] = useState('');
   const [values, setValues] = useState('');
+ // const [bg, setBg] = useState([]);
 
   localStorage.clear();
 
@@ -26,8 +32,8 @@ export default function Cadastro({ users }) {
   }, [idAtual]);
 
   return (
-    <div>
-      <div className="">
+    <div className='container'>
+      <div>
         <Skeleton height={28} width={300} />
       </div>
       <div className="jumbotron jumbotron-fuid bg-img mt-2"></div>
@@ -36,7 +42,7 @@ export default function Cadastro({ users }) {
         <h6 className="mx-auto text-dark ">
           Caso o Usuário Cadastrado não esteja aparecendo aperte F5
         </h6>
-        <div className="col-md-12">
+        <div className="col-md-12 container">
           <h2 className="titolo mx-auto text-dark">Lista de Usuários</h2>
           <table class="table">
             <thead>
