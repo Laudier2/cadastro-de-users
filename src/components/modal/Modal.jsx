@@ -2,8 +2,8 @@ import React from 'react';
 import './modal.css';
 
 const Modal = ({ dados }) => {
-  console.clear();
-  console.log(dados);
+  //onsole.clear();
+  //console.log(dados);
 
   return (
     <>

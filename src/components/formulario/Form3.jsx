@@ -15,10 +15,11 @@ const Form3 = () => {
   const [state, setLocal13] = useState('');
   const [number, setLocal14] = useState('');
   const [street, setLocal15] = useState('');
+  const [image, setLocal16] = useState('');
   const [data, setData] = useState('');
-  const [user2, setUser] = useState('');
+  //const [user2, setUser] = useState('');
 
-  console.clear();
+  //console.clear();
 
   useEffect(() => {
     const LocalName = async () => {
@@ -97,11 +98,18 @@ const Form3 = () => {
       setLocal15(res);
     };
     LocalRua();
+    const LocalImg = async () => {
+      const req = await localStorage.getItem('image');
+      const res = await JSON.parse(req);
+      setLocal16(res);
+    };
+    LocalImg();
   }, []);
 
   useEffect(() => {
     const result = {
       name,
+      image,
       password,
       email,
       phone,
@@ -117,6 +125,7 @@ const Form3 = () => {
     setData(result);
   }, [
     name,
+    image,
     password,
     email,
     phone,
@@ -154,7 +163,7 @@ const Form3 = () => {
       });
   }
 
-  useEffect(() => {
+  /*useEffect(() => {
     (async() => {
       const user = await axios.get(process.env.REACT_APP_API_URL)
       const res = await user.data
@@ -163,8 +172,8 @@ const Form3 = () => {
     })()
   },[])
 
-  console.log(data)
-  console.log(user2)
+  //console.log(data)
+  //console.log(user2)*/
 
   return (
     <>
@@ -181,6 +190,7 @@ const Form3 = () => {
           </Link>
           <hr className='h1' />
           <div className="form-group input-group">       
+            <p className='p-2'><img src={image} alt="img" style={{width: 100, marginRight: 5}} /> | </p>
             <p className='p-2'><strong>Nome:  </strong>{name} | </p>
             <p className='p-2'><strong>Email:  </strong>{email} |</p>
             <p className='p-2'><strong>Senha:  </strong>{password} |</p>

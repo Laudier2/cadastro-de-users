@@ -1,29 +1,12 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import './modal.css';
-import axios from 'axios';
-
-const camposIniciasDeValores = {
-  name: '',
-  sobrenome: '',
-  email: '',
-  phone: '',
-  cep: '',
-  city: '',
-  district: '',
-  apartment_or_house: '',
-  state: '',
-  street: '',
-  number: '',
-};
+import { api } from '../../api';
 
 const ModalAdd = () => {
-  const [values, setValues] = useState(camposIniciasDeValores);
+  const [values, setValues] = useState([]);
 
   const history = useHistory();
-
-  console.clear();
-  console.log(camposIniciasDeValores);
 
   const onChange = (ev) => {
     const { name, value } = ev.target;
@@ -34,14 +17,10 @@ const ModalAdd = () => {
   function onSubmit(ev) {
     ev.preventDefault();
 
-    
-    const url = `${process.env.REACT_APP_API_URL}`;
-
-    axios.post(url, values)
+    api.post("/user/", values)
     .then((res) => {
         alert('O usuário foi Criado com sucesso', res);
 
-        history.push('/users');
         window.location.reload()
       })
       .catch((erro) => {
@@ -58,6 +37,22 @@ const ModalAdd = () => {
   return (
     <>
       <form onSubmit={onSubmit}>
+      <div className="form-group input-group">
+          <img src={values.image} alt="img" style={{width: 50}} />
+          <div className="input-grou-prepend align-self-center">
+            <div className="input-group-text">
+              <i className="p-1 text-info">URL img</i>
+            </div>
+          </div>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="image"
+            name="image"
+            value={values.image}
+            onChange={onChange}
+          />
+        </div>
       <div className="form-group input-group">
           <div className="input-grou-prepend align-self-center">
             <div className="input-group-text">

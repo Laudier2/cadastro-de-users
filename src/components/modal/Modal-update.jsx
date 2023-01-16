@@ -1,39 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import './modal.css';
-import axios from 'axios';
-
-const camposIniciasDeValores = {
-  name: '',
-  sobrenome: '',
-  email: '',
-  phone: '',
-  cep: '',
-  city: '',
-  district: '',
-  apartment_or_house: '',
-  state: '',
-  street: '',
-  number: '',
-};
-/*
-name,
-password,
-email,
-phone,
-cep,
-city,
-district,
-apartment_or_house,
-state,
-street,
-number*/
+import { api } from '../../api';
+import { useHistory } from 'react-router-dom';
 
 const Modal2 = (props) => {
   const [values, setValues] = useState(props);
 
-  console.clear();
-  console.log(camposIniciasDeValores);
-
+  const history = useHistory();
+  
   const onChange = (ev) => {
     const { name, value } = ev.target;
 
@@ -44,44 +18,82 @@ const Modal2 = (props) => {
 
   useEffect(() => {
     if (props.idAtual) {
-      axios
-        .get(`${process.env.REACT_APP_API_URL}${props.idAtual}`)
+      api
+        .get(`/user/${props.idAtual}`)
         .then((res) => {
           setValues(res.data);
         });
     }
   }, [props.idAtual]);
 
-  function onSubmit(ev) {
+  /*function onSubmit(ev) {
     ev.preventDefault();
 
-    const method = props.idAtual ? 'put' : 'post';
+    /*const method = props.idAtual ? 'put' : 'post';
     const url = props.idAtual
       ? `${process.env.REACT_APP_API_URL}` //${props.idAtual}
-      : `${process.env.REACT_APP_API_URL}`;
+      : `${process.env.REACT_APP_API_URL}`;*/
 
-    axios[method](url, values)
-      .then((res) => {
-        if (props.idAtual === '') {
-          alert('O produto foi Criado com sucesso ', res);
-        } else {
-          alert('O produto foi Atualizado com sucesso');
+    /*api.put("/user/", values)
+      .then((res) => {  
+          alert('O produto foi Atualizado com sucesso', res);
+
+          history.push('/users');
+          window.location.reload()
         }
-        window.location.reload();
-      })
+      )
       .catch((erro) => {
         alert(
           'Houve um erro ao tenta criar esse usuario, erro relacionado a ' +
             erro
         );
-
+        
+        history.push('/')
         window.location.reload();
       });
+  }*/
+
+  function onSubmit(ev) {
+    ev.preventDefault();
+
+    api.put("/user/", values)
+    .then((res) => {
+        alert('O usuário foi Criado com sucesso', res);
+
+        history.push('/users');
+        window.location.reload()
+      })
+      .catch((erro) => {
+        alert(
+          `Houve um erro ao tenta criar esse usuário, erro relacionado a ${erro}`
+        );
+
+        //localStorage.clear();
+        history.push('/');
+        //window.location.reload();
+      });
   }
+
 
   return (
     <>
       <form onSubmit={onSubmit}>
+        <div className="form-group input-group">
+          <img src={values.image} alt="img" style={{width: 50}} />
+          <div className="input-grou-prepend align-self-center">
+            <div className="input-group-text">
+              <i className="p-1 text-info">URL img</i>
+            </div>
+          </div>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="image"
+            name="image"
+            value={values.image}
+            onChange={onChange}
+          />
+        </div>
         <div className="form-group input-group">
           <div className="input-grou-prepend align-self-center">
             <div className="input-group-text">
@@ -251,7 +263,7 @@ const Modal2 = (props) => {
         
         <input
           type="submit"
-          value={props.idAtual === '' ? 'Salvar' : 'Atualizar'}
+          value={'Atualizar'}
           className="btn btn-primary btn-block"
         />
       </form>

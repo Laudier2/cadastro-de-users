@@ -2,27 +2,22 @@ import React from 'react';
 import './modal.css';
 
 const Modal = ({ dados }) => {
-  console.clear();
-  console.log(dados);
+  //console.clear();
+  //console.log(dados);
 
   return (
     <>
       <div className="container col-sm-8 bg-img1">
         <ul>
+          <li style={{listStyle: "none"}}>
+            <strong className="text-primary"></strong>{' '}
+            <img src={dados.image} alt="img" style={{width: 150, margin: 25}} />
+          </li>
           <li>
             <strong className="text-primary">Nome:</strong> {dados.name}
           </li>
           <li>
-            <strong className="text-primary">Sobrenome:</strong>{' '}
-            {dados.sobrenome}
-          </li>
-          <li>
             <strong className="text-primary">E-mail</strong> {dados.email}
-          </li>
-          <li>
-            {' '}
-            <strong className="text-primary">Data de Nacimento:</strong>{' '}
-            {dados.nacimento}
           </li>
           <li>
             {' '}
@@ -37,8 +32,10 @@ const Modal = ({ dados }) => {
             {' '}
             <strong className="text-primary">Cidade:</strong> {dados.city}
           </li>
+          <li>
             {' '}
-            <strong className="text-primary"> CEP:</strong> {dados.cep}
+            <strong className="text-primary">CEP:</strong> {dados.cep}
+          </li>
           </li>
           <li>
             {' '}

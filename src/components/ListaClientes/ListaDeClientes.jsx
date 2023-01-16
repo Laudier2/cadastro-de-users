@@ -7,18 +7,11 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Skeleton from 'react-loading-skeleton';
 import ModalAdd from '../modal/Modal-add';
-//import styled from "styled-components";
-//
-//const Bg = styled.background`
-//    background: #0099FF;
-//`;
 
 export default function Cadastro({ users }) {
   const [pega, setPega] = useState('');
   const [idAtual, setIdAtual] = useState('');
   const [values, setValues] = useState('');
- // const [bg, setBg] = useState([]);
-
   localStorage.clear();
 
   useEffect(() => {
@@ -30,6 +23,8 @@ export default function Cadastro({ users }) {
         });
     }
   }, [idAtual]);
+
+  console.log(users)
 
   return (
     <div className='container'>
@@ -50,6 +45,7 @@ export default function Cadastro({ users }) {
                 <th scope="col">
                   <i className="fas fa-coins" />
                 </th>
+                <th scope="col mrg">Imagem</th>
                 <th scope="col mrg">Usuario</th>
                 <th scope="col mrg">E-mail</th>
                 <th scope="col mrg">Phone</th>
@@ -159,6 +155,9 @@ export default function Cadastro({ users }) {
                       </div>
                     </div>
                   </th>
+                  <td>
+                    <img src={r.image} alt="img" style={{width: 30}} />
+                  </td>
                   <td>
                     {r.name}
                   </td>

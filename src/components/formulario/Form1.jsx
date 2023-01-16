@@ -27,6 +27,7 @@ const Form1 = () => {
     localStorage.setItem('name', JSON.stringify(e.name));
     localStorage.setItem('password', JSON.stringify(e.password));
     localStorage.setItem('email', JSON.stringify(e.email));
+    localStorage.setItem('image', JSON.stringify(e.image));
   };
 
   return (
@@ -46,7 +47,7 @@ const Form1 = () => {
           <div className="form-group input-group">
             <div className="input-grou-prepend align-self-center">
               <div className="input-group-text">
-                <i className="fas fa-id-badge p-1 mt-2 text-info" />
+              <i class="fa-solid fa-user p-1 mt-2 text-info"></i>
               </div>
             </div>
             <input
@@ -60,7 +61,7 @@ const Form1 = () => {
           <div className="form-group input-group">
             <div className="input-grou-prepend align-self-center">
               <div className="input-group-text">
-                <i className="fas fa-id-badge p-1 mt-2 text-info" />
+              <i class="fa-solid fa-key p-1 mt-2 text-info"></i>
               </div>
             </div>
             <input
@@ -68,6 +69,20 @@ const Form1 = () => {
               className="form-control"
               placeholder="Password"
               name="password"
+              onChange={onChange}
+            />
+          </div>
+          <div className="form-group input-group">
+            <div className="input-grou-prepend align-self-center">
+              <div className="input-group-text">
+              <i class="fa-solid fa-image p-1 mt-2 text-info"></i>
+              </div>
+            </div>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="image"
+              name="image"
               onChange={onChange}
             />
           </div>
@@ -88,7 +103,7 @@ const Form1 = () => {
           <div className="form-group input-group">
             <div className="input-grou-prepend align-self-center">
               <div className="input-group-text">
-                <i className="fas fa-envelope  p-1 mt-2 text-info" />
+              <i class="fa-solid fa-phone p-1 mt-2 text-info"></i>
               </div>
             </div>
             <input
