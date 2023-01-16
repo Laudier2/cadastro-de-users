@@ -26,7 +26,7 @@ const Modal2 = (props) => {
     }
   }, [props.idAtual]);
 
-  /*function onSubmit(ev) {
+  function onSubmit(ev) {
     ev.preventDefault();
 
     /*const method = props.idAtual ? 'put' : 'post';
@@ -34,7 +34,7 @@ const Modal2 = (props) => {
       ? `${process.env.REACT_APP_API_URL}` //${props.idAtual}
       : `${process.env.REACT_APP_API_URL}`;*/
 
-    /*api.put("/user/", values)
+    api.put("/user/", values)
       .then((res) => {  
           alert('O produto foi Atualizado com sucesso', res);
 
@@ -51,29 +51,7 @@ const Modal2 = (props) => {
         history.push('/')
         window.location.reload();
       });
-  }*/
-
-  function onSubmit(ev) {
-    ev.preventDefault();
-
-    api.put("/user/", values)
-    .then((res) => {
-        alert('O usuário foi Criado com sucesso', res);
-
-        history.push('/users');
-        window.location.reload()
-      })
-      .catch((erro) => {
-        alert(
-          `Houve um erro ao tenta criar esse usuário, erro relacionado a ${erro}`
-        );
-
-        //localStorage.clear();
-        history.push('/');
-        //window.location.reload();
-      });
   }
-
 
   return (
     <>
