@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './modal.css';
 import { api } from '../../api';
 import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 
 const Modal2 = (props) => {
   const [values, setValues] = useState(props);
@@ -29,12 +30,12 @@ const Modal2 = (props) => {
   function onSubmit(ev) {
     ev.preventDefault();
 
-    /*const method = props.idAtual ? 'put' : 'post';
+    const method = props.idAtual ? 'put' : 'post';
     const url = props.idAtual
       ? `${process.env.REACT_APP_API_URL}` //${props.idAtual}
-      : `${process.env.REACT_APP_API_URL}`;*/
+      : `${process.env.REACT_APP_API_URL}`;
 
-    api.put("/user/", values)
+    axios[method](url, values)
       .then((res) => {  
           alert('O produto foi Atualizado com sucesso', res);
 

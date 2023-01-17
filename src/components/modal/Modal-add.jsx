@@ -21,6 +21,7 @@ const ModalAdd = () => {
     .then((res) => {
         alert('O usuário foi Criado com sucesso', res);
 
+        history.push('/users');
         window.location.reload()
       })
       .catch((erro) => {
