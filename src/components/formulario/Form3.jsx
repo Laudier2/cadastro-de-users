@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { api } from '../../api';
+//import axios from 'axios';
 
 const Form3 = () => {
   const [name, setLocal1] = useState('');
@@ -144,10 +145,10 @@ const Form3 = () => {
   function onSubmit(ev) {
     ev.preventDefault();
 
-    const url = `${process.env.REACT_APP_API_URL}`;
+    //const url = `${process.env.REACT_APP_API_URL}`;
 
-    axios
-      .post(url, data)
+    api
+      .post("/user/", data)
       .then((res) => {
         alert('O usuário foi Criado com sucesso ', res);
 
