@@ -49,7 +49,7 @@ const Modal2 = (props) => {
             erro
         );
         
-        history.push('/')
+        history.push('/users')
         window.location.reload();
       });
   }

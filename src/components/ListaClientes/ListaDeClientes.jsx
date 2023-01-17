@@ -17,7 +17,7 @@ export default function Cadastro({ users }) {
   useEffect(() => {
     if (idAtual) {
       axios
-        .get(`${process.env.REACT_APP_API_URL}${idAtual}`)
+        .get(`http://3.208.50.76:3004/users/${idAtual}`)
         .then((res) => {
           setValues(res.data);
         });
