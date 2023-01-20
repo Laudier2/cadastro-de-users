@@ -49,7 +49,7 @@ EXPOSE ${PORT}
 #CMD ["npm","run", "init"]
 #CMD ["npm","run", "dbpull"]
 #CMD ["npm","run", "migrate"]
-CMD ["npm","start"]
+CMD ["yarn","start"]
 
 #COMANDO PARA CRIAR O CONTAINER
 # => docker build -t api_estoque_contaoner .
