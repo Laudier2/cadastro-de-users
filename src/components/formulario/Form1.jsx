@@ -8,6 +8,8 @@ const Form1 = () => {
   const [data2, setData2] = useState('');
   //const [local, setLocal] = useState('');
 
+  const hotmail = "@gmail.com"
+
   const onChange = (ev) => {
     const { name, value } = ev.target;
 
@@ -26,7 +28,7 @@ const Form1 = () => {
   const localCreate = (e) => {
     localStorage.setItem('name', JSON.stringify(e.name));
     localStorage.setItem('password', JSON.stringify(e.password));
-    localStorage.setItem('email', JSON.stringify(e.email));
+    localStorage.setItem('email', JSON.stringify(e.email+hotmail));
     localStorage.setItem('image', JSON.stringify(e.image));
   };
 
