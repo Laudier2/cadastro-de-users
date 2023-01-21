@@ -14,7 +14,7 @@ const Form3 = () => {
   const [district, setLocal7] = useState('');
   const [apartment_or_house, setLocal9] = useState('');
   const [state, setLocal13] = useState('');
-  const [number, setLocal14] = useState('');
+  const [number1, setLocal14] = useState('');
   const [street, setLocal15] = useState('');
   const [image, setLocal16] = useState('');
   const [data, setData] = useState('');
@@ -87,7 +87,7 @@ const Form3 = () => {
     LocalUf();
 
     const LocalNumero = async () => {
-      const req = await localStorage.getItem('number');
+      const req = await localStorage.getItem('number1');
       const res = await JSON.parse(req);
       setLocal14(res);
     };
@@ -120,7 +120,7 @@ const Form3 = () => {
       apartment_or_house,
       state,
       street,
-      number
+      number1
     };
 
     setData(result);
@@ -136,7 +136,7 @@ const Form3 = () => {
     apartment_or_house,
     state,
     street,
-    number
+    number1
   ]);
 
   const history = useHistory();
@@ -145,7 +145,7 @@ const Form3 = () => {
   function onSubmit(ev) {
     ev.preventDefault();
 
-    //const url = `${process.env.REACT_APP_API_URL}`;
+    console.log(data)
 
     api
       .post("/user/", data)
@@ -158,23 +158,10 @@ const Form3 = () => {
         alert(
           `Houve um erro ao tenta criar esse usuário, erro relacionado ao ${erro}`);
 
-        //localStorage.clear();
         history.push('/');
         //window.location.reload();
       });
   }
-
-  /*useEffect(() => {
-    (async() => {
-      const user = await axios.get(process.env.REACT_APP_API_URL)
-      const res = await user.data
-
-      setUser(res)
-    })()
-  },[])
-
-  //console.log(data)
-  //console.log(user2)*/
 
   return (
     <>
@@ -201,7 +188,7 @@ const Form3 = () => {
             <p className='p-2'><strong>Bairro:  </strong>{district} |</p>
             <p className='p-2'><strong>Rua:  </strong>{street} |</p>
             <p className='p-2'><strong>Casa:  </strong>{apartment_or_house} |</p>
-            <p className='p-2'><strong>Numero:  </strong>{number} |</p>
+            <p className='p-2'><strong>Numero:  </strong>{number1} |</p>
           </div>
           <button type="submit" className="btn btn-success btn-block">
             Salva

@@ -48,7 +48,7 @@ const Modal = ({ dados }) => {
           <li>
             {' '}
             <strong className="text-primary">Número:</strong>
-            {dados.number}
+            {dados.number1}
           </li>
           <li>
             {' '}

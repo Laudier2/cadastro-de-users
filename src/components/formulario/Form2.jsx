@@ -30,7 +30,7 @@ const Form2 = () => {
     localStorage.setItem('apartment_or_house', JSON.stringify(e.apartment_or_house));
     localStorage.setItem('district', JSON.stringify(e.district));
     localStorage.setItem('state', JSON.stringify(e.state));
-    localStorage.setItem('number', JSON.stringify(e.number));
+    localStorage.setItem('number1', JSON.stringify(e.number1));
     localStorage.setItem('apartment_or_house', JSON.stringify(e.apartment_or_house));
     localStorage.setItem('street', JSON.stringify(e.street));
   };
@@ -156,7 +156,7 @@ const Form2 = () => {
             type="text"
             className="form-control"
             placeholder="Número"
-            name="number"
+            name="number1"
             onChange={onChange}
           />
         </div>

@@ -3,16 +3,21 @@ import './cadastro.css';
 import ModalView from '../modal/Modal-view';
 import ModalDel from '../modal/Modal-delete_user'
 import ModalUpdate from '../modal/Modal-update';
+import ModalAdress2 from '../modal/Modal-add-adress2';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Skeleton from 'react-loading-skeleton';
 import ModalAdd from '../modal/Modal-add';
 
 export default function Cadastro({ users }) {
+
   const [pega, setPega] = useState('');
   const [idAtual, setIdAtual] = useState('');
   const [values, setValues] = useState('');
-  localStorage.clear();
+
+  const reload = () => {
+    window.location.reload()
+  }
 
   useEffect(() => {
     if (idAtual) {
@@ -24,10 +29,8 @@ export default function Cadastro({ users }) {
     }
   }, [idAtual]);
 
-  console.log(users)
-
   return (
-    <div className='container'>
+    <div>
       <div>
         <Skeleton height={28} width={300} />
       </div>
@@ -37,7 +40,12 @@ export default function Cadastro({ users }) {
         <h6 className="mx-auto text-dark ">
           Caso o Usuário Cadastrado não esteja aparecendo aperte F5
         </h6>
+       
         <div className="col-md-12 container">
+        <Link onClick={reload}>
+          <i class="fa-sharp fa-solid fa-rotate p-2 text-info btn btn-light card" 
+          style={{fontSize: 30}} />
+        </Link>
           <h2 className="titolo mx-auto text-dark">Lista de Usuários</h2>
           <table class="table">
             <thead>
@@ -50,6 +58,7 @@ export default function Cadastro({ users }) {
                 <th scope="col mrg">E-mail</th>
                 <th scope="col mrg">Phone</th>
                 <th scope="col mrg">
+                
                   <Link
                       class="btn btn-outline-info"
                       data-bs-toggle="modal"
@@ -165,17 +174,50 @@ export default function Cadastro({ users }) {
                   <td>{r.phone}</td>
                   <td>
                     
-                    <Link
-                      class="btn btn-outline-info"
-                      data-bs-toggle="modal"
-                      data-bs-target="#exampleModal"
-                      onClick={() => {
-                        setIdAtual(r.id);
-                      }}
-                      className="mr-2"
+                  {/*<Link
+                    class="btn btn-outline-info"
+                    data-bs-toggle="modal"
+                    data-bs-target="#exampleModalAd"
+                    onClick={() => {
+                      setIdAtual(r.id)
+                    }}
+                    className="mr-2"
+                  >
+                    <i className="fas fa-plus mt-2 p-2 text-info btn btn-light card" />
+                  </Link>*/}
+
+                    <div
+                      class="modal fade"
+                      id="exampleModalAd"
+                      tabindex="-1"
+                      aria-labelledby="exampleModalLabel"
+                      aria-hidden="true"
                     >
-                      <i className="fa-solid fa-plus mt-2 p-2 text-info btn btn-light card" />
-                    </Link>
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5
+                              class="modal-title titolo2"
+                              id="exampleModalLabel"
+                            >
+                              Cadastre o Segundo endereco aqui
+                            </h5>
+                            <button
+                              type="button"
+                              class="btn-close"
+                              data-bs-dismiss="modal"
+                              aria-label="Close"
+                              className="btn-outline-danger"
+                            >
+                              x
+                            </button>
+                          </div>
+                          <div class="modal-body text-dark">
+                            <ModalAdress2 />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
 
                     <div
                       class="modal fade"
@@ -260,7 +302,7 @@ export default function Cadastro({ users }) {
                       data-bs-toggle="modal"
                       data-bs-target="#exampleModal4"
                       onClick={() => {
-                        setIdAtual(r.id);
+                        setIdAtual(r.id)
                       }}
                       className="mr-2"
                     >

@@ -65,7 +65,7 @@ const Form1 = () => {
               </div>
             </div>
             <input
-              type="text"
+              type="password"
               className="form-control"
               placeholder="Password"
               name="password"

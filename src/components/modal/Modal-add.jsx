@@ -17,6 +17,8 @@ const ModalAdd = () => {
   function onSubmit(ev) {
     ev.preventDefault();
 
+    console.log(values)
+
     api.post("/user/", values)
     .then((res) => {
         alert('O usuário foi Criado com sucesso', res);
@@ -215,8 +217,8 @@ const ModalAdd = () => {
             className="form-control"
             placeholder="number"
             min="0"
-            name="number"
-            value={values.number}
+            name="number1"
+            value={values.number1}
             onChange={onChange}
           />
         </div>
