@@ -6,7 +6,8 @@ import Form2 from './components/formulario/Form2';
 import Form3 from './components/formulario/Form3';
 import ListaDeClientes from './components/ListaClientes/ListaDeClientes'
 import './style.css'
-import { api } from './api';
+//import { api } from './api';
+import axios from 'axios';
 
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
           'Authorization': `token ${access_token}`
         }
       })*/
-      const req = await api.get('/user')
+      const req = await axios.get(`${process.env.REACT_APP_API_URL}/user`)
       const res = await req.data
 
       setUsers(res)
