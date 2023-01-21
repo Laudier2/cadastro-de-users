@@ -152,6 +152,7 @@ const Form3 = () => {
         alert('O usuário foi Criado com sucesso ', res);
 
         history.push('/users');
+        window.location.reload()
       })
       .catch((erro) => {
         alert(

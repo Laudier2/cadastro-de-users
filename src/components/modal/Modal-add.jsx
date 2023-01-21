@@ -33,7 +33,7 @@ const ModalAdd = () => {
 
         //localStorage.clear();
         history.push('/');
-        //window.location.reload();
+        window.location.reload();
       });
   }
 
