@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import './modal.css';
-import { api } from '../../api';
+import { api } from '../../config/api';
 
 const ModalAdd = (props) => {
   const [values, setValues] = useState([]);

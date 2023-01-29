@@ -6,24 +6,17 @@ import Form2 from './components/formulario/Form2';
 import Form3 from './components/formulario/Form3';
 import ListaDeClientes from './components/ListaClientes/ListaDeClientes'
 import './style.css'
-import { api } from './api';
+import { api } from './config/api';
 
 
 function App() {
 
   const [ users, setUsers ] = useState([])
-  //const [ product, setProduct ] = useState([])
-
-  //const access_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk4MzdlMjIwLTg3OTUtNGZjNy04NDU0LTc2OGUzZDBjYWM1NiIsImlhdCI6MTY3Mzg4NTQ0NCwiZXhwIjoxNjczOTE0MjQ0fQ.iadX7-X1vxKJy1X6efAdFsNAS2PeRR3FHZ9SL0GTzVg"
-
+  
   useEffect(() => {
     (async() => {
-      /*axios.get('http://44.213.49.43:3004/user', {
-        headers: {
-          'Authorization': `token ${access_token}`
-        }
-      })*/
-      const req = await api.get('/user')
+     
+      const req = await api.get()
       const res = await req.data
 
       setUsers(res)

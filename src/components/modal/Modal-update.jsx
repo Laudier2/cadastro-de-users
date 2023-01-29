@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './modal.css';
-import { api } from '../../api';
+import { api } from '../../config/api';
 import { useHistory } from 'react-router-dom';
 
 const Modal2 = (props) => {
