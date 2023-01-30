@@ -39,7 +39,7 @@ const Modal2 = (props) => {
       )
       .catch((erro) => {
         alert(
-          'Houve um erro ao tenta criar esse usuario, erro relacionado a ' +
+          'Houve um erro ao tenta criar esse usuário ou esse email ja esta relacionado a outro usuário, erro relacionado a ' +
             erro
         );
         

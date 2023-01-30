@@ -37,7 +37,7 @@ const Form1 = () => {
       <div className="container col-md-8 text-white">
         <form>
           <h4
-            className="mx-auto text-white mb-3 titolo text-dark"
+            className="mx-auto text-white mb-3 titolo text-white"
             style={{ width: 330, marginTop: 50 }}
           >
             Preecha os campos abaixo{' '}

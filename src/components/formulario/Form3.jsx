@@ -168,7 +168,7 @@ const Form3 = () => {
       <div className="container col-md-8">
         <form onSubmit={onSubmit}>
           <h4
-            className="mx-auto text-white mb-3 titolo text-dark"
+            className="mx-auto text-white mb-3 titolo text-white"
             style={{ width: 330, marginTop: 50 }}
           >
             Confira os dados abaixo
@@ -177,7 +177,7 @@ const Form3 = () => {
           <i class="fa-solid fa-arrow-left"></i>
           </Link>
           <hr className='h1' />
-          <div className="form-group input-group">       
+          <div className="form-group input-group text-white">       
             <p className='p-2'><img src={image} alt="img" style={{width: 100, marginRight: 5}} /> | </p>
             <p className='p-2'><strong>Nome:  </strong>{name} | </p>
             <p className='p-2'><strong>Email:  </strong>{email} |</p>

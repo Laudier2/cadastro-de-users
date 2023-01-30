@@ -48,7 +48,7 @@ const Form2 = () => {
     <div>
       <div className="container col-md-8 text-white">
         <h4
-          className="mx-auto text-white mb-3 titolo text-dark"
+          className="mx-auto text-white mb-3 titolo text-white"
           style={{ width: 330, marginTop: 50}}
         >
           Preecha os enderecos 1 e 2{' '}
@@ -60,7 +60,6 @@ const Form2 = () => {
           </Link>
         </h4>
 
-        <span className="titolo text-dark">Endereco 1</span>
         <div className="form-group input-group">
           <div className="input-grou-prepend align-self-center">
             <div className="input-group-text">

@@ -29,6 +29,8 @@ export default function Cadastro({ users }) {
     }
   }, [idAtual]);
 
+  //btn-outline-warning
+
   return (
     <div>
       <div>
@@ -37,7 +39,7 @@ export default function Cadastro({ users }) {
       <div className="jumbotron jumbotron-fuid bg-img mt-2"></div>
 
       <div className="row">
-        <h6 className="mx-auto text-dark ">
+        <h6 className="mx-auto text-white ">
           Caso o Usuário Cadastrado não esteja aparecendo aperte F5
         </h6>
        
@@ -46,10 +48,10 @@ export default function Cadastro({ users }) {
           <i class="fa-sharp fa-solid fa-rotate p-2 text-info btn btn-light card" 
           style={{fontSize: 30}} />
         </Link>
-          <h2 className="titolo mx-auto text-dark">Lista de Usuários</h2>
+          <h2 className="titolo mx-auto text-white">Lista de Usuários</h2>
           <table class="table">
             <thead>
-              <tr className="text-dark">
+              <tr className="text-white">
                 <th scope="col">
                   <i className="fas fa-coins" />
                 </th>
@@ -108,7 +110,7 @@ export default function Cadastro({ users }) {
 
             {users.map((r) => (
               <tbody key={r.id}>
-                <tr className="btn-outline-warning rounded text-dark">
+                <tr className="btn-outline-secondary rounded text-white">
                   <th scope="row">
                     <button
                       type="button"
