@@ -5,7 +5,7 @@ import './nav.css';
 const Nav = () => {
   return (
     <>
-      <nav className="navbar navbar-light bg-info">
+      <nav className="navbar navbar-light bg-info col-xs-12">
         <div className="container-fluid">
           <button
             className="navbar-toggler"
@@ -18,7 +18,7 @@ const Nav = () => {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <Link to="/" style={{ textDecoration: 'none' }} className="titolo2 mx-auto text-dark">
+          <Link to="/" style={{ textDecoration: 'none'}} className="titolo2 mx-auto text-dark">
             <h2>Sistema de Cadastro de Usuários</h2>
           </Link>
         </div>

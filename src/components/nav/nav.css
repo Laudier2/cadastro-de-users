@@ -28,4 +28,8 @@
   .text-dark {
     font-size: 15px;
   }
+  .titolo2 {
+    display: none;
+  }
+  
 }

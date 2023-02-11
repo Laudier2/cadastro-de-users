@@ -26,9 +26,9 @@ function App() {
 
   return (
     <>
-      <Nav />
-      <div className="container">
-        <div className="col-md-8 offset-md-2">
+      <div container>
+        <div className="col-xs-12">
+          <Nav />
           <Route exact path="/users" component={() => <ListaDeClientes users={users}/>} />
           <Route exact path="/" component={Form1} />
           <Route exact path="/form2" component={Form2} />

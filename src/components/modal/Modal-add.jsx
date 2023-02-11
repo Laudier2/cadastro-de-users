@@ -1,10 +1,19 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import './modal.css';
+import ImageUploading from 'react-images-uploading';
 import { api } from '../../config/api';
 
 const ModalAdd = () => {
   const [values, setValues] = useState([]);
+  const [images, setImages] = useState([]);
+  const maxNumber = 69;
+
+  const onChangeImg = (imageList, addUpdateIndex) => {
+    // data for submit
+    console.log(imageList, addUpdateIndex);
+    setImages(imageList);
+  };
 
   const history = useHistory();
 
@@ -39,6 +48,50 @@ const ModalAdd = () => {
 
   return (
     <>
+    <div >
+            <ImageUploading
+              multiple
+              value={images}
+              onChange={onChangeImg}
+              maxNumber={maxNumber}
+              dataURLKey="data_url"
+            >
+              {({
+                imageList,
+                onImageUpload,
+                onImageRemoveAll,
+                onImageUpdate,
+                onImageRemove,
+                isDragging,
+                dragProps,
+              }) => (
+                // write your building UI
+                <div className="container col-md-3 mt-5">
+                  <button
+                    className='btn btn-primary p-3 h5'
+                    style={isDragging ? { color: 'red' } : undefined}
+                    onClick={onImageUpload}
+                    {...dragProps}
+                  >
+                    Click or Drop here
+                  </button>
+                  &nbsp;
+                  <button className='btn btn-danger p-3 h5' onClick={onImageRemoveAll}>Remove all images</button>
+                  {imageList.map((image, index) => (
+                    <div>
+                      <div key={index} className="container col-md-12">
+                        <img src={image['data_url']} alt="" width="300" />
+                      </div>
+                      <div className="container col-7 mt-2">
+                        <button onClick={() => onImageUpdate(index)}>Update</button>
+                        <button onClick={() => onImageRemove(index)}>Remove</button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </ImageUploading>
+          </div>
       <form onSubmit={onSubmit}>
       <div className="form-group input-group">
           <img src={values.image} alt="img" style={{width: 50}} />

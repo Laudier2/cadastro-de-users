@@ -22,6 +22,10 @@ const Form3 = () => {
 
   //console.clear();
 
+  const formData = new FormData()
+  const img = formData.append("image", image)
+  console.log(img)
+
   useEffect(() => {
     const LocalName = async () => {
       const req = await localStorage.getItem('name');

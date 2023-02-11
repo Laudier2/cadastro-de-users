@@ -29,8 +29,6 @@ export default function Cadastro({ users }) {
     }
   }, [idAtual]);
 
-  //btn-outline-warning
-
   return (
     <div>
       <div>
@@ -38,18 +36,19 @@ export default function Cadastro({ users }) {
       </div>
       <div className="jumbotron jumbotron-fuid bg-img mt-2"></div>
 
-      <div className="row">
+      <div className="container">
         <h6 className="mx-auto text-white ">
-          Caso o Usuário Cadastrado não esteja aparecendo aperte F5
+          Caso o Usuário Cadastrado não esteja clica o icone sircular abáisxo
         </h6>
        
-        <div className="col-md-12 container">
+        <div>
         <Link onClick={reload}>
           <i class="fa-sharp fa-solid fa-rotate p-2 text-info btn btn-light card" 
           style={{fontSize: 30}} />
         </Link>
           <h2 className="titolo mx-auto text-white">Lista de Usuários</h2>
-          <table class="table">
+          <table className="table">
+           
             <thead>
               <tr className="text-white">
                 <th scope="col">
@@ -59,6 +58,8 @@ export default function Cadastro({ users }) {
                 <th scope="col mrg">Usuario</th>
                 <th scope="col mrg">E-mail</th>
                 <th scope="col mrg">Phone</th>
+                <th scope="col mrg">Estado</th>
+                <th scope="col mrg">Cidade</th>
                 <th scope="col mrg">
                 
                   <Link
@@ -174,6 +175,8 @@ export default function Cadastro({ users }) {
                   </td>
                   <td>{r.email}</td>
                   <td>{r.phone}</td>
+                  <td>{r.state}</td>
+                  <td>{r.city}</td>
                   <td>
                     
                   {/*<Link

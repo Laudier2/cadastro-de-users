@@ -1,12 +1,20 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { mask, unMask } from 'remask';
+import ImageUploading from 'react-images-uploading';
 import "./form.css"
 
 const Form1 = () => {
   const [data, setData] = useState('');
   const [data2, setData2] = useState('');
-  //const [local, setLocal] = useState('');
+  const [images, setImages] = useState([]);
+  const maxNumber = 69;
+
+  const onChangeImg = (imageList, addUpdateIndex) => {
+    // data for submit
+    console.log(imageList, addUpdateIndex);
+    setImages(imageList);
+  };
 
   const hotmail = "@gmail.com"
 
@@ -29,12 +37,70 @@ const Form1 = () => {
     localStorage.setItem('name', JSON.stringify(e.name));
     localStorage.setItem('password', JSON.stringify(e.password));
     localStorage.setItem('email', JSON.stringify(e.email+hotmail));
-    localStorage.setItem('image', JSON.stringify(e.image));
+  };
+
+  const localCreateImg = (e) => {
+    localStorage.setItem('image', JSON.stringify(e.data_url));
   };
 
   return (
     <>
       <div className="container col-md-8 text-white">
+      <div>
+            <ImageUploading
+              multiple
+              value={images}
+              onChange={onChangeImg}
+              maxNumber={maxNumber}
+              dataURLKey="data_url"
+            >
+              {({
+                imageList,
+                onImageUpload,
+                onImageRemoveAll,
+                onImageUpdate,
+                onImageRemove,
+                isDragging,
+                dragProps,
+              }) => (
+                // write your building UI
+                <div className="container col-md-4 mt-5">
+                  {imageList.map((image, index) => (
+                    <div>
+                      <div key={index} className="container col-md-12">
+                        <img src={image['data_url']} alt="" width="300" />
+                      </div>
+                    </div>
+                  ))}
+                  {images == "" ? <button
+                    className='btn btn-primary p-3 h5'
+                    style={isDragging ? { color: 'red' } : undefined}
+                    onClick={onImageUpload}
+                    {...dragProps}
+                  >
+                    <i class="fa-solid fa-cloud-arrow-up">  Escolha uma imagem</i>
+                  </button> : 
+                  imageList.map((image, index) => (
+                  <button 
+                    className='btn btn-outline-success text-white mt-2' 
+                    style={{margin: "auto", display: "flex"}}
+                    onClick={() => localCreateImg(image)}>
+                      Quero essa
+                  </button>
+                  ))
+                  }
+                  {images > "" ? <button 
+                    className='btn btn-warning mt-2' 
+                    style={{margin: "auto", display: "flex"}}
+                    onClick={onImageRemoveAll}>
+                      Escolher Outra
+                  </button> : ""
+                  }
+                  &nbsp;
+                </div>
+              )}
+            </ImageUploading>
+          </div>
         <form>
           <h4
             className="mx-auto text-white mb-3 titolo text-white"
@@ -45,7 +111,6 @@ const Form1 = () => {
           <i class="fa-solid fa-arrow-right"></i>
           </Link>
           </h4>
-
           <div className="form-group input-group">
             <div className="input-grou-prepend align-self-center">
               <div className="input-group-text">
@@ -71,20 +136,6 @@ const Form1 = () => {
               className="form-control"
               placeholder="Password"
               name="password"
-              onChange={onChange}
-            />
-          </div>
-          <div className="form-group input-group">
-            <div className="input-grou-prepend align-self-center">
-              <div className="input-group-text">
-              <i class="fa-solid fa-image p-1 mt-2 text-info"></i>
-              </div>
-            </div>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="image"
-              name="image"
               onChange={onChange}
             />
           </div>
