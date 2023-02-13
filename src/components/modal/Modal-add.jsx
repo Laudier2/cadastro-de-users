@@ -1,13 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import './modal.css';
 import ImageUploading from 'react-images-uploading';
 import { api } from '../../config/api';
-
 const ModalAdd = () => {
   const [values, setValues] = useState([]);
   const [images, setImages] = useState([]);
   const maxNumber = 69;
+  const [image, setLocal16] = useState('');
+
+  useEffect(() => {
+    const LocalImg = async () => {
+      const req = await localStorage.getItem('image');
+      const res = await JSON.parse(req);
+      setLocal16(res);
+    };
+    LocalImg();
+  },[image])
 
   const onChangeImg = (imageList, addUpdateIndex) => {
     // data for submit
@@ -37,7 +46,8 @@ const ModalAdd = () => {
       })
       .catch((erro) => {
         alert(
-          `Houve um erro ao tenta criar esse usuário, erro relacionado a ${erro}`
+          `Houve um erro ao tenta criar esse usuário, Lembre que, o E-mail ñão pode ser um que já tenha cadastro, e a sua imagem tem que ser no formato (gif, jpg, ou png) se não for, o cadastro não sera realiozado ok, conrrija isso e tente novamente.`
+
         );
 
         //localStorage.clear();
@@ -46,55 +56,75 @@ const ModalAdd = () => {
       });
   }
 
+  const localCreateImg = (e) => {
+    localStorage.setItem('image', JSON.stringify(e.data_url));
+
+  };
+
+  console.log(image)
+
   return (
     <>
-    <div >
-            <ImageUploading
-              multiple
-              value={images}
-              onChange={onChangeImg}
-              maxNumber={maxNumber}
-              dataURLKey="data_url"
-            >
-              {({
-                imageList,
-                onImageUpload,
-                onImageRemoveAll,
-                onImageUpdate,
-                onImageRemove,
-                isDragging,
-                dragProps,
-              }) => (
-                // write your building UI
-                <div className="container col-md-3 mt-5">
-                  <button
-                    className='btn btn-primary p-3 h5'
-                    style={isDragging ? { color: 'red' } : undefined}
-                    onClick={onImageUpload}
-                    {...dragProps}
-                  >
-                    Click or Drop here
-                  </button>
-                  &nbsp;
-                  <button className='btn btn-danger p-3 h5' onClick={onImageRemoveAll}>Remove all images</button>
-                  {imageList.map((image, index) => (
-                    <div>
-                      <div key={index} className="container col-md-12">
-                        <img src={image['data_url']} alt="" width="300" />
-                      </div>
-                      <div className="container col-7 mt-2">
-                        <button onClick={() => onImageUpdate(index)}>Update</button>
-                        <button onClick={() => onImageRemove(index)}>Remove</button>
-                      </div>
-                    </div>
-                  ))}
+      <div >
+        <ImageUploading
+          multiple
+          value={images}
+          onChange={onChangeImg}
+          maxNumber={maxNumber}
+          dataURLKey="data_url"
+        >
+          {({
+            imageList,
+            onImageUpload,
+            onImageRemoveAll,
+            onImageUpdate,
+            onImageRemove,
+            isDragging,
+            dragProps,
+          }) => (
+            // write your building UI
+            <div className="container col-md-12 mt-1 mb-5">
+              {imageList.map((image, index) => (
+                <div>
+                  <div key={index} className="container col-md-9">
+                    <img src={image['data_url']} alt="" width="300" className="rounded-circle" />
+                  </div>
                 </div>
-              )}
-            </ImageUploading>
-          </div>
+              ))}
+              {images <= "" ? <button
+                className='btn btn-primary p-3 h5'
+                style={isDragging ? { color: 'red' } : undefined}
+                onClick={onImageUpload}
+                {...dragProps}
+              >
+                <i className="fa-solid fa-cloud-arrow-up"> Cloica aqui para carrega uma imagem</i>
+                <p>Ou se preferir insira uma url de uma imagem a baxo</p>
+              </button> : 
+              imageList.map((image, index) => (
+              <button 
+                className='btn btn-outline-success text-dark mt-2' 
+                style={{margin: "auto", display: "flex"}}
+                onClick={() => localCreateImg(image)}>
+                  Quero essa
+              </button>
+              ))
+              }
+              {images > "" ? <button 
+                className='btn btn-warning mt-2' 
+                style={{margin: "auto", display: "flex"}}
+                onClick={onImageRemoveAll}>
+                  Escolher Outra
+              </button> : ""
+              }
+              &nbsp;
+            </div>
+          )}
+        </ImageUploading>
+      </div>
       <form onSubmit={onSubmit}>
       <div className="form-group input-group">
-          <img src={values.image} alt="img" style={{width: 50}} />
+          <img src={values.image || image} alt="img" style={{width: 50}} />
+
           <div className="input-grou-prepend align-self-center">
             <div className="input-group-text">
               <i className="p-1 text-info">URL img</i>
@@ -105,7 +135,7 @@ const ModalAdd = () => {
             className="form-control"
             placeholder="image"
             name="image"
-            value={values.image}
+            value={values.image || image}
             onChange={onChange}
           />
         </div>

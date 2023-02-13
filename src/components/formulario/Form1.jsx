@@ -72,7 +72,7 @@ const Form1 = () => {
                       </div>
                     </div>
                   ))}
-                  {images == "" ? <button
+                  {images <= "" ? <button
                     className='btn btn-primary p-3 h5'
                     style={isDragging ? { color: 'red' } : undefined}
                     onClick={onImageUpload}

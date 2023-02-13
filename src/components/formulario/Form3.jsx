@@ -156,7 +156,7 @@ const Form3 = () => {
       })
       .catch((erro) => {
         alert(
-          `Houve um erro ao tenta criar esse usuário, erro relacionado ao ${erro}`);
+          `Houve um erro ao tenta criar esse usuário, Lembre que, o E-mail ñão pode ser um que já tenha cadastro, e a sua imagem tem que ser no formato (gif, jpg, ou png) se não for, o cadastro não sera realiozado ok, conrrija isso e tente novamente.`);
 
         history.push('/');
         //window.location.reload();
