@@ -31,7 +31,7 @@ const Modal2 = (props) => {
 
     api.put("/user/", values)
       .then((res) => {  
-          alert('O produto foi Atualizado com sucesso', res);
+          alert('O usuário foi Atualizado com sucesso', res);
 
           history.push('/users');
           window.location.reload()

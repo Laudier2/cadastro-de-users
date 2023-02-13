@@ -163,6 +163,8 @@ const Form3 = () => {
       });
   }
 
+  console.log(image)
+
   return (
     <>
       <div className="container col-md-8">

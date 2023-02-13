@@ -8,3 +8,12 @@
   height: 100vh;
   background-repeat: no-repeat;
 }
+
+.loading {
+  display: flex;
+  align-items: center;
+  margin-top: 25%;
+  margin-left: 50%;
+  margin-right: 50%;
+  margin-bottom: 65%;
+}

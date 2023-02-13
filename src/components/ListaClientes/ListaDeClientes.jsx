@@ -30,7 +30,7 @@ export default function Cadastro({ users }) {
   }, [idAtual]);
 
   return (
-    <div>
+    <>
       <div>
         <Skeleton height={28} width={300} />
       </div>
@@ -320,6 +320,6 @@ export default function Cadastro({ users }) {
           </table>
         </div>
       </div>
-    </div>
+    </>
   );
 }
