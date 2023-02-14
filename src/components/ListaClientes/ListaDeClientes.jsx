@@ -38,7 +38,7 @@ export default function Cadastro({ users }) {
 
       <div className="container">
         <h6 className="mx-auto text-white ">
-          Caso o Usuário Cadastrado não esteja clica o icone sircular abáisxo
+          Caso o Usuário Cadastrado não esteja clica no icone sircular abáisxo para atualiza a pagina!
         </h6>
        
         <div>

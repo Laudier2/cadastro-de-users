@@ -24,6 +24,8 @@ const ModalAdd = () => {
     setImages(imageList);
   };
 
+  console.log(values)
+
   const history = useHistory();
 
   const onChange = (ev) => {
@@ -35,14 +37,28 @@ const ModalAdd = () => {
   function onSubmit(ev) {
     ev.preventDefault();
 
-    console.log(values)
-
-    api.post("/user/", values)
+    const res = {
+      apartment_or_house: values.apartment_or_house,
+      cep: values.cep,
+      city: values.city,
+      district: values.district,
+      email: values.email,
+      name: values.name,
+      number1: values.number1,
+      password: values.password,
+      phone: values.phone,
+      state: values.state,
+      street: values.street,
+      image: image
+    }
+    console.log(res)
+    api.post("/user/", res)
     .then((res) => {
         alert('O usuário foi Criado com sucesso', res);
 
         history.push('/users');
         window.location.reload()
+        //localStorage.clear()
       })
       .catch((erro) => {
         alert(
@@ -50,8 +66,7 @@ const ModalAdd = () => {
 
         );
 
-        //localStorage.clear();
-        history.push('/');
+        history.push('/users');
         window.location.reload();
       });
   }
@@ -61,7 +76,7 @@ const ModalAdd = () => {
 
   };
 
-  console.log(image)
+  //console.log(image)
 
   return (
     <>
@@ -105,10 +120,9 @@ const ModalAdd = () => {
                 className='btn btn-outline-success text-dark mt-2' 
                 style={{margin: "auto", display: "flex"}}
                 onClick={() => localCreateImg(image)}>
-                  Quero essa
+                  Comfirma essa
               </button>
-              ))
-              }
+              ))}
               {images > "" ? <button 
                 className='btn btn-warning mt-2' 
                 style={{margin: "auto", display: "flex"}}
@@ -122,8 +136,8 @@ const ModalAdd = () => {
         </ImageUploading>
       </div>
       <form onSubmit={onSubmit}>
-      <div className="form-group input-group">
-          <img src={values.image || image} alt="img" style={{width: 50}} />
+      {<div className="form-group input-group">
+          {/*<img src={values.image || image} alt="img" style={{width: 50}} />*/}
 
           <div className="input-grou-prepend align-self-center">
             <div className="input-group-text">
@@ -138,7 +152,7 @@ const ModalAdd = () => {
             value={values.image || image}
             onChange={onChange}
           />
-        </div>
+        </div>}
       <div className="form-group input-group">
           <div className="input-grou-prepend align-self-center">
             <div className="input-group-text">
