@@ -31,8 +31,6 @@ const Modal2 = (props) => {
   function onSubmit(ev) {
     ev.preventDefault();
 
-    console.log(values)
-
     api.put("/user/", values)
       .then((res) => {  
           alert('O usuário foi Atualizado com sucesso', res);

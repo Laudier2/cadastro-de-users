@@ -18,10 +18,7 @@ const Form3 = () => {
   const [street, setLocal15] = useState('');
   const [image, setLocal16] = useState('');
   const [data, setData] = useState('');
-  //const [user2, setUser] = useState('');
-
-  //console.clear();
-
+  
   useEffect(() => {
     const LocalName = async () => {
       const req = await localStorage.getItem('name');
@@ -144,8 +141,6 @@ const Form3 = () => {
   function onSubmit(ev) {
     ev.preventDefault();
 
-    console.log(data)
-
     api
       .post("/user/", data)
       .then((res) => {
@@ -162,8 +157,6 @@ const Form3 = () => {
         //window.location.reload();
       });
   }
-
-  console.log(image)
 
   return (
     <>
