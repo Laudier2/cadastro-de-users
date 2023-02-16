@@ -62,12 +62,12 @@ export default function Cadastro({ users }) {
                 <th scope="col mrg">Cidade</th>
                 <th scope="col mrg">
                 
-                  <Link
+                  <Link to="/"
                       class="btn btn-outline-info"
-                      data-bs-toggle="modal"
-                      data-bs-target="#exampleModal"
                       className="mr-2"
-                    >
+                      >
+                      {/*data-bs-toggle="modal"
+                      data-bs-target="#exampleModal"*/}
                       <i className="fas fa-user-plus mt-2 p-2 text-info btn btn-light card" />
                     </Link>
 

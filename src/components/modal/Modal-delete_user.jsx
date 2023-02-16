@@ -36,6 +36,9 @@ const Modal2 = (props) => {
 
   const ApagaProduto = async () => {
     //Esse process.env.REACT_APP_API_URL é uma variave de ambiente que contem a url da api
+    setTimeout(() => {
+      return <p>Carregando...</p>
+    }, 3000);
     await  api.delete("/user/" + values)
       .then((res) => {
         alert('O Usuário foi deletado com sucesso');

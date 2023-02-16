@@ -3,6 +3,8 @@ import './modal.css';
 import { api } from '../../config/api';
 import { useHistory } from 'react-router-dom';
 
+localStorage.clear()
+
 const Modal2 = (props) => {
   const [values, setValues] = useState(props);
 
@@ -28,6 +30,8 @@ const Modal2 = (props) => {
 
   function onSubmit(ev) {
     ev.preventDefault();
+
+    console.log(values)
 
     api.put("/user/", values)
       .then((res) => {  

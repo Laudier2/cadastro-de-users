@@ -179,18 +179,18 @@ const Form3 = () => {
           <i class="fa-solid fa-arrow-left"></i>
           </Link>
           <hr className='h1' />
-          <div className="form-group input-group text-white">       
-            <p className='p-2'><img src={image} alt="img" style={{width: 100, marginRight: 5}} /> | </p>
-            <p className='p-2'><strong>Nome:  </strong>{name} | </p>
-            <p className='p-2'><strong>Email:  </strong>{email} |</p>
-            <p className='p-2'><strong>Senha:  </strong>{password} |</p>
-            <p className='p-2'><strong>Telefone:  </strong>{phone} |</p>
-            <p className='p-2'><strong>Estado:  </strong>{state} |</p>
-            <p className='p-2'><strong>Cidade:  </strong>{city} |</p>
-            <p className='p-2'><strong>Bairro:  </strong>{district} |</p>
-            <p className='p-2'><strong>Rua:  </strong>{street} |</p>
-            <p className='p-2'><strong>Casa:  </strong>{apartment_or_house} |</p>
-            <p className='p-2'><strong>Numero:  </strong>{number1} |</p>
+          <div className="card p-4">       
+            <p><img src={image} alt="img" style={{width: 100, marginRight: 5}} /> </p>
+            <p><strong>Nome:  </strong>{name}</p>
+            <p><strong>Email:  </strong>{email}</p>
+            <p><strong>Senha:  </strong>{password}</p>
+            <p><strong>Telefone:  </strong>{phone}</p>
+            <p><strong>Estado:  </strong>{state}</p>
+            <p><strong>Cidade:  </strong>{city}</p>
+            <p><strong>Bairro:  </strong>{district}</p>
+            <p><strong>Rua:  </strong>{street}</p>
+            <p><strong>Casa:  </strong>{apartment_or_house}</p>
+            <p><strong>Numero:  </strong>{number1}</p>
           </div>
           <button type="submit" className="btn btn-success btn-block">
             Salva

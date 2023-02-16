@@ -7,7 +7,23 @@ const ModalAdd = () => {
   const [values, setValues] = useState([]);
   const [images, setImages] = useState([]);
   const maxNumber = 69;
-  const [image, setLocal16] = useState('');
+  const [image, setLocal16] = useState([]);
+
+  const onChangeImg = (imageList, addUpdateIndex) => {
+    // data for submit
+    console.log(imageList, addUpdateIndex);
+    setImages(imageList);
+  };
+
+  //const ts = image.replace(image, "01.png")
+
+  console.log(image)
+
+  const LocalImg = async () => {
+    const req = await localStorage.getItem('image');
+    const res = await JSON.parse(req);
+    return res
+  }
 
   useEffect(() => {
     const LocalImg = async () => {
@@ -16,15 +32,7 @@ const ModalAdd = () => {
       setLocal16(res);
     };
     LocalImg();
-  },[image])
-
-  const onChangeImg = (imageList, addUpdateIndex) => {
-    // data for submit
-    console.log(imageList, addUpdateIndex);
-    setImages(imageList);
-  };
-
-  console.log(values)
+  },[])
 
   const history = useHistory();
 
@@ -36,6 +44,8 @@ const ModalAdd = () => {
 
   function onSubmit(ev) {
     ev.preventDefault();
+
+    console.log(image)
 
     const res = {
       apartment_or_house: values.apartment_or_house,
@@ -49,15 +59,15 @@ const ModalAdd = () => {
       phone: values.phone,
       state: values.state,
       street: values.street,
-      image: image
+      image: "image"
     }
     console.log(res)
     api.post("/user/", res)
     .then((res) => {
         alert('O usuário foi Criado com sucesso', res);
 
-        history.push('/users');
-        window.location.reload()
+        //history.push('/users');
+        //window.location.reload()
         //localStorage.clear()
       })
       .catch((erro) => {
@@ -66,8 +76,8 @@ const ModalAdd = () => {
 
         );
 
-        history.push('/users');
-        window.location.reload();
+        //history.push('/users');
+        //window.location.reload();
       });
   }
 
@@ -92,8 +102,6 @@ const ModalAdd = () => {
             imageList,
             onImageUpload,
             onImageRemoveAll,
-            onImageUpdate,
-            onImageRemove,
             isDragging,
             dragProps,
           }) => (
@@ -113,7 +121,7 @@ const ModalAdd = () => {
                 {...dragProps}
               >
                 <i className="fa-solid fa-cloud-arrow-up"> Cloica aqui para carrega uma imagem</i>
-                <p>Ou se preferir insira uma url de uma imagem a baxo</p>
+                {/*<p>Ou se preferir insira uma url de uma imagem a baxo</p>*/}
               </button> : 
               imageList.map((image, index) => (
               <button 
@@ -136,8 +144,8 @@ const ModalAdd = () => {
         </ImageUploading>
       </div>
       <form onSubmit={onSubmit}>
-      {<div className="form-group input-group">
-          {/*<img src={values.image || image} alt="img" style={{width: 50}} />*/}
+      {/*<div className="form-group input-group">
+          {/*<img src={values.image || image} alt="img" style={{width: 50}} />}
 
           <div className="input-grou-prepend align-self-center">
             <div className="input-group-text">
@@ -149,10 +157,10 @@ const ModalAdd = () => {
             className="form-control"
             placeholder="image"
             name="image"
-            value={values.image || image}
+            value={image || values.image}
             onChange={onChange}
           />
-        </div>}
+            </div>*/}
       <div className="form-group input-group">
           <div className="input-grou-prepend align-self-center">
             <div className="input-group-text">

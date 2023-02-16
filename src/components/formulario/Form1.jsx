@@ -4,6 +4,8 @@ import { mask, unMask } from 'remask';
 import ImageUploading from 'react-images-uploading';
 import "./form.css"
 
+localStorage.clear()
+
 const Form1 = () => {
   const [data, setData] = useState('');
   const [data2, setData2] = useState('');
@@ -11,7 +13,6 @@ const Form1 = () => {
   const maxNumber = 69;
 
   const onChangeImg = (imageList, addUpdateIndex) => {
-    // data for submit
     console.log(imageList, addUpdateIndex);
     setImages(imageList);
   };
@@ -40,6 +41,7 @@ const Form1 = () => {
   };
 
   const localCreateImg = (e) => {
+    alert("A imagen foi selecionada com sucesso")
     localStorage.setItem('image', JSON.stringify(e.data_url));
   };
 
@@ -112,7 +114,7 @@ const Form1 = () => {
           </Link>
           </h4>
           <div className="form-group input-group">
-            <div className="input-grou-prepend align-self-center">
+            <div className="input-grou-prepend align-self-center p-2">
               <div className="input-group-text">
               <i class="fa-solid fa-user p-1 mt-2 text-info"></i>
               </div>
@@ -126,7 +128,7 @@ const Form1 = () => {
             />
           </div>
           <div className="form-group input-group">
-            <div className="input-grou-prepend align-self-center">
+            <div className="input-grou-prepend align-self-center p-2">
               <div className="input-group-text">
               <i class="fa-solid fa-key p-1 mt-2 text-info"></i>
               </div>
@@ -134,27 +136,32 @@ const Form1 = () => {
             <input
               type="password"
               className="form-control"
-              placeholder="Password"
+              placeholder="Senha"
               name="password"
               onChange={onChange}
             />
           </div>
           <div className="form-group input-group">
-            <div className="input-grou-prepend align-self-center">
+            <div className="input-grou-prepend align-self-center p-2">
               <div className="input-group-text">
                 <i className="fas fa-envelope  p-1 mt-2 text-info" />
               </div>
             </div>
             <input
               type="email"
-              className="form-control"
-              placeholder="E-mail"
+              className="form-control col-sm-8"
+              placeholder="Nome para o email"
               name="email"
               onChange={onChange}
             />
+            <div className="input-grou-prepend align-self-center">
+              <div className="input-group-text">
+                <h1>@hotmail.com</h1>
+              </div>
+            </div>
           </div>
           <div className="form-group input-group">
-            <div className="input-grou-prepend align-self-center">
+            <div className="input-grou-prepend align-self-center p-2">
               <div className="input-group-text">
               <i class="fa-solid fa-phone p-1 mt-2 text-info"></i>
               </div>
