@@ -6,8 +6,6 @@ import "./form.css"
 
 localStorage.clear()
 
-const veri = localStorage.getItem("number1")
-
 const Form1 = () => {
   const [data, setData] = useState('');
   const [data2, setData2] = useState('');
